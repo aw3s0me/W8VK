@@ -1,25 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.ItemsViewModel;
-using VkontakteViewModel.Resources;
-using VkontakteViewModel.Services;
+using VKCore;
+using VKModel.Entities;
+using VKViewModels.ItemsViewModels;
+using VKViewModels.Resources;
+using Windows.ApplicationModel;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class MessagesPageViewModel : BaseViewModel
     {
@@ -39,9 +27,9 @@ namespace VkontakteViewModel
 
         public MessagesPageViewModel()
         {
-            if (DesignerProperties.IsInDesignTool)
+            if (DesignMode.DesignModeEnabled)
             {
-                var user = new User() { FirstName = "Имя", LastName = "Фамилия", Nickname = "Ник", PhotoMedium = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg", Uid = "12345"};
+                var user = new User() { FirstName = "Имя", LastName = "Фамилия", NickName = "Ник", PhotoMedium = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg", Uid = "12345"};
                 var users = new[] {user};
                 var message = new MessageViewModel(new Message()
                 {
@@ -49,8 +37,8 @@ namespace VkontakteViewModel
                     Uid = user.Uid,
                     Title = "title of message",
                     Date = new DateTime(2010,05,05,04,04,04),
-                    IsNewMessage = false,
-                    Mid = "0123"
+                    IsNewMsg = false,
+                    MsgId = "0123"
                     },users, "0123");
                 messages = new List<MessageViewModel>()
                  {
@@ -73,13 +61,13 @@ namespace VkontakteViewModel
 
         private void GetRefreshMessages()
         {
-            this.GetService<IVkontakteApi>().GetMessages(result =>
+            this.GetService<IVkApi>().GetMessages(result =>
             {
                 var uids = result.Select(i => i.Uid).ToList();
-                var currentUid = GetService<IVkontakteApi>().GetCurrentUid();
+                var currentUid = GetService<IVkApi>().GetCurrentUid();
                 uids.Add(currentUid);
 
-                GetService<IVkontakteApi>().GetUserProfiles(uids,
+                GetService<IVkApi>().GetUserProfiles(uids,
                     getUserProfileResult =>
                     {
                         messages = result.Select(i => new MessageViewModel(i, getUserProfileResult, currentUid)).ToList();
@@ -110,7 +98,7 @@ namespace VkontakteViewModel
 
         public void PinToStart()
         {
-            GetService<IVkontakteApi>().GetCurrentUserProfile(user=>
+            GetService<IVkApi>().GetCurrentUserProfile(user=>
             {
                 var userViewModel = new UserViewModel(user);
 

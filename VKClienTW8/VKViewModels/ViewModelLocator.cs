@@ -1,6 +1,6 @@
-using VkontakteCore;
+using VkViewModels;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class ViewModelLocator
     {

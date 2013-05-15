@@ -1,29 +1,28 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.ItemsViewModel;
-using VkontakteViewModel.Resources;
-using VkontakteViewModel.Services;
+using VKCore;
+using VKModel.Entities;
+using VKViewModels.ItemsViewModels;
+using VKViewModels.Resources;
+using Windows.ApplicationModel;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class PhotoAlbumPageViewModel : BaseViewModel
     {
         public PhotoAlbumPageViewModel()
         {
-            if (DesignerProperties.IsInDesignTool)
+            if (DesignMode.DesignModeEnabled)
             {
                 var user = new User()
                 {
                     Uid = "1",
                     FirstName = "Имя",
                     LastName = "Фамилия",
-                    Nickname = "Ник",
+                    NickName = "Ник",
                     PhotoMedium = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg"
                 };
                 UserViewModel = new UserViewModel(user);
@@ -34,8 +33,8 @@ namespace VkontakteViewModel
                     Created = new DateTime(2000, 10, 10),
                     Description = "Description",
                     Title = "Title Title Title Title Title Title Title",
-                    OwnerID = user.Uid,
-                    ThumbID = "3",
+                    OwnerId = user.Uid,
+                    ThumbId = "3",
                     Size = "10"
                 };
 
@@ -43,15 +42,15 @@ namespace VkontakteViewModel
                 {
                     new Photo()
                     {
-                        Aid = album.AlbumId,
+                        AlbumId = album.AlbumId,
                         Created = new DateTime(2000, 10, 10),
-                        OwnerID = user.Uid,
-                        Pid = "3",
+                        OwnerId = user.Uid,
+                        PhotoId = "3",
                         Source = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
                         SourceBig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
                         SourceSmall = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
-                        SourceXbig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
-                        SourceXxbig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
+                        SourceXBig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
+                        SourceX2Big = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
                     }
                 };
 
@@ -98,13 +97,13 @@ namespace VkontakteViewModel
             }
         }
 
-        public override void OnNavigatedTo(PhoneApplicationPage page, System.Windows.Navigation.NavigationEventArgs e)
+        public override void OnNavigatedTo(Page page, NavigationEventArgs e)
         {
             base.OnNavigatedTo(page, e);
 
             var uid = GetStateOrUrlParam("uid");
 
-            GetService<IVkontakteApi>().GetUserProfile(uid, GetUserProfileComplete, GetUserProfileError);
+            GetService<IVkApi>().GetUserProfile(uid, GetUserProfileComplete, GetUserProfileError);
         }
 
         public void GetUserProfileComplete(User user)
@@ -112,9 +111,9 @@ namespace VkontakteViewModel
             userViewModel = new UserViewModel(user);
             OnPropertyChange("UserViewModel");
 
-            GetService<IVkontakteApi>().GetPhotoAlbums(user.Uid, (albums) =>
+            GetService<IVkApi>().GetPhotoAlbums(user.Uid, (albums) =>
             {
-                GetService<IVkontakteApi>().GetPhotos(user.Uid,albums.Select(i => i.ThumbID).ToList(), 
+                GetService<IVkApi>().GetPhotos(user.Uid,albums.Select(i => i.ThumbId).ToList(), 
                 (photos)=>
                 {
                     photoAlbums = albums.Select(i => new PhotoAlbumViewModel(i, photos)).ToList();

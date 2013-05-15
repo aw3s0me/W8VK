@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using VKCore;
+using VKDataLayer;
 using VKViewModels.Resources;
 using VKModel.Entities;
 using VKModel.Interfaces;
+using VKViewModels.Services;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace VKViewModels
@@ -18,13 +23,13 @@ namespace VKViewModels
             get { return appResource; }
         }
 
-        public bool IsOpenedFromPinned
+    /*    public bool IsOpenedFromPinned
         {
             get
             {
                 return GetStateOrUrlParamNullable("pinToStart")=="1";
             }
-        }
+        } */
 
         public void OnPropertyChange(string propertyName)
         {
@@ -35,111 +40,111 @@ namespace VKViewModels
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        protected Page ApplicationPage;
 
-        private static IVkontakteApi vkontakteApi = null;
-        protected T GetService<T>() where T: class
+        private static IVkApi _vkontakteApi = null;
+
+        public virtual void OnNavigatedTo(Page page, NavigationEventArgs e)
         {
-            if(typeof(T)==typeof(IEntityDataStorage))
+            ApplicationPage = page;
+        }
+
+        public virtual void OnNavigatedFrom(Page page, NavigationEventArgs e)
+        {
+
+        }
+
+        protected T GetService<T>() where T : class
+        {
+            if (typeof (T) == typeof (IEntityStorage))
             {
                 return new EntityStorage() as T;
             }
-
-            if (typeof(T) == typeof(IVkontakteApi))
+            if (typeof (T) == typeof (IVkApi))
             {
-                if (vkontakteApi == null) vkontakteApi = new VkontakteApi(GetService<IEntityDataStorage>());
-                return vkontakteApi as T;
+                if (_vkontakteApi == null) _vkontakteApi = new VkApi(GetService<IEntityStorage>());
+                return _vkontakteApi as T;
             }
-
             if(typeof(T)==typeof(ISimpleNavigationService))
             {
                 return new SimpleNavigationService() as T;
             }
-
             if (typeof(T) == typeof(ICommonErrorHandler))
             {
-                return new CommonErrorHandler(GetService<IVkontakteApi>(), GetService<ISimpleNavigationService>()) as T;
+                return new CommonErrorHandler(GetService<IVkApi>(), GetService<ISimpleNavigationService>()) as T;
             }
-            throw new Exception("service not found");
+            throw new Exception("service not found"); 
         }
 
 
 
-        public string GetStateOrUrlParam(string key)
+        /*public string GetStateOrUrlParam(string key)
         {
             var result = GetStateOrUrlParamNullable(key);
             if (result == null) throw new Exception("Key " + key + " not found");
             return result;
-        }
+        }  */
 
-        public string GetStateOrUrlParamNullable(string key)
-        {
-            if (PageState.ContainsKey(key))
+            /*    public string GetStateOrUrlParamNullable(string key)
+                {
+                    if (PageState.ContainsKey(key))
+                    {
+                        return (string)PageState[key];
+                    }
+                    if (ApplicationPage.NavigationContext.QueryString.ContainsKey(key))
+                    {
+                        return ApplicationPage.NavigationContext.QueryString[key];
+                    }
+                    return null;
+                } */
+
+            /*   public T GetState<T>(string key)
+               {
+                   if(PageState.ContainsKey(key))
+                   {
+                       return (T)PageState[key];
+                   }
+                   return default(T);
+               } */
+
+
+            //protected IDictionary<string, object> PageState
+            //{
+            //  get { return ApplicationPage.State; }
+            //}
+            /*
+            public bool IsPortraitOrientation
             {
-                return (string)PageState[key];
+                get
+                {
+                    return Orientation == PageOrientation.Portrait || 
+                        Orientation == PageOrientation.PortraitUp ||
+                        Orientation == PageOrientation.PortraitDown;
+                }
             }
-            if (ApplicationPage.NavigationContext.QueryString.ContainsKey(key))
+
+            public bool IsLandscapeOrientation
             {
-                return ApplicationPage.NavigationContext.QueryString[key];
+                get
+                {
+                    return Orientation == PageOrientation.Landscape ||
+                        Orientation == PageOrientation.LandscapeLeft ||
+                        Orientation == PageOrientation.LandscapeRight;
+                }
             }
-            return null;
-        }
 
-        public T GetState<T>(string key)
-        {
-            if(PageState.ContainsKey(key))
+            protected PageOrientation Orientation
             {
-                return (T)PageState[key];
+                get { return ((PhoneApplicationFrame) Application.Current.RootVisual).Orientation; }
             }
-            return default(T);
-        }
-
-
-        protected IDictionary<string, object> PageState
-        {
-            get { return ApplicationPage.State; }
-        }
-
-        public bool IsPortraitOrientation
-        {
-            get
-            {
-                return Orientation == PageOrientation.Portrait || 
-                    Orientation == PageOrientation.PortraitUp ||
-                    Orientation == PageOrientation.PortraitDown;
-            }
-        }
-
-        public bool IsLandscapeOrientation
-        {
-            get
-            {
-                return Orientation == PageOrientation.Landscape ||
-                    Orientation == PageOrientation.LandscapeLeft ||
-                    Orientation == PageOrientation.LandscapeRight;
-            }
-        }
-
-        protected PageOrientation Orientation
-        {
-            get { return ((PhoneApplicationFrame) Application.Current.RootVisual).Orientation; }
-        }
-
-        protected Dispatcher Dispatcher
-        {
-            get { return Deployment.Current.Dispatcher; }
-        }
-
-        protected ApplicationPage ApplicationPage;
-
-        public virtual void OnNavigatedTo(ApplicationPage page, NavigationEventArgs e)
-        {
+            */
             
-            ApplicationPage = page;
-        }
-
-        public virtual void OnNavigatedFrom(ApplicationPage page, NavigationEventArgs e)
+        protected CoreDispatcher Dispatcher
         {
-            
-        }
+            get { return CoreWindow.GetForCurrentThread().Dispatcher; }
+        } 
+
+       
     }
+
 }

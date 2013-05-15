@@ -1,36 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Windows;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.Helper;
-using VkontakteViewModel.ItemsViewModel;
-using VkontakteViewModel.Resources;
-using VkontakteViewModel.Services;
+using VKCore;
+using VKModel.Entities;
+using VKViewModels.ItemsViewModels;
+using VKViewModels.Resources;
+using Windows.ApplicationModel;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class PhotosViewPageViewModel :BaseViewModel
     {
         public PhotosViewPageViewModel()
         {
-            if (DesignerProperties.IsInDesignTool)
+            if (DesignMode.DesignModeEnabled)
             {
                 var photo = new Photo()
                 {
                     Created = new DateTime(2000, 10, 10),
-                    Pid = "3",
+                    PhotoId = "3",
                     Source = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
                     SourceBig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
                     SourceSmall = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
-                    SourceXbig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
-                    SourceXxbig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
+                    SourceXBig = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
+                    SourceX2Big = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg",
                 };
                 Photos = new Collection<PhotoViewModel>()
                 {
@@ -77,7 +74,7 @@ namespace VkontakteViewModel
             set { userViewModel = value; OnPropertyChange("UserViewModel"); }
         }
 
-        public override void OnNavigatedTo(PhoneApplicationPage page, System.Windows.Navigation.NavigationEventArgs e)
+        public override void OnNavigatedTo(Page page, NavigationEventArgs e)
         {
             base.OnNavigatedTo(page, e);
 
@@ -86,13 +83,13 @@ namespace VkontakteViewModel
             var selectedPhotoIdParam = GetStateOrUrlParamNullable("selectedPhotoId");
             
 
-            GetService<IVkontakteApi>().GetUserProfile(uid,user=>
+            GetService<IVkApi>().GetUserProfile(uid,user=>
             {
                 UserViewModel=new UserViewModel(user);
             },
             error=> { });
 
-            GetService<IVkontakteApi>().GetPhotosByAlbum(aid,uid, resultPhotos=>
+            GetService<IVkApi>().GetPhotosByAlbum(aid,uid, resultPhotos=>
             {
                 Photos = resultPhotos.Select(i => new PhotoViewModel(i)).ToList();
                 OnPropertyChange("Photos");
@@ -189,7 +186,7 @@ namespace VkontakteViewModel
 
         private PhotoViewModel GetNextPhoto(FlickerArg e)
         {
-            if (e.Direction == System.Windows.Controls.Orientation.Horizontal)
+            if (e.Direction == Orientation.Horizontal)
             {
                 if (e.HorizontalVelocity < 0)
                 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class DelegateCommand : ICommand
     {

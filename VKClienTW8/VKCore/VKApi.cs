@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using VKModel.Entities;
 using VKModel.Interfaces;
 using VKServiceLayer;
 
 namespace VKCore
 {
-    public interface IVKontakteApi
+    public interface IVkApi
     {
         void Initialize(string appId, string currentUserId, string accessToken);
         void Initialize(AuthorizationContext context);
@@ -36,50 +33,48 @@ namespace VKCore
     }
 
 
-    public class VKontakteApi:IVKontakteApi
+    public class VkApi : IVkApi
     {
-        private readonly IEntityDataStorage entityDataStorage;
+        private readonly IEntityStorage _entityDataStorage;
 
-        public VkontakteApi(IEntityDataStorage entityDataStorage)
+        public VkApi(IEntityStorage entityDataStorage)
         {
-            this.entityDataStorage = entityDataStorage;
+            _entityDataStorage = entityDataStorage;
         }
 
-        private AuthorizationContext context;
+        private AuthorizationContext _context;
         private AuthorizationContext Context
         {
             get
             {
-                if (context == null)
+                if (_context == null)
                 {
-                    var authorizationContext = entityDataStorage.LoadEntity<AuthorizationContext>();
-                    context = authorizationContext;
+                    var authorizationContext = _entityDataStorage.LoadEntity<AuthorizationContext>();
+                    _context = authorizationContext;
                 }
-                return context;
+                return _context;
             }
             set 
             { 
-                context = value;
-                entityDataStorage.SaveEntity(context);
+                _context = value;
+                _entityDataStorage.SaveEntity(_context);
             }
         }
 
         public void Initialize(string appId, string currentUserId, string accessToken)
         {
-            Context = new AuthorizationContext()
-            {
+            Context = new AuthorizationContext
+                {
                 AppId = appId,
                 CurrentUserId = currentUserId,
                 AccessToken = accessToken
             };
-
-
         }
 
         public void Initialize(AuthorizationContext authorizationContext)
         {
             if (authorizationContext == null) throw new ArgumentNullException("authorizationContext");
-            this.Context = authorizationContext;
+            Context = authorizationContext;
         }
 
         public void GetFriends(Action<List<User>> getFriendsAction, Action<Error> errorAction)
@@ -92,15 +87,13 @@ namespace VKCore
         {
             if (Context == null)
             {
-                errorAction.Invoke(new Error() {ErrorCode = "5"});
+                errorAction.Invoke(new Error {ErrorCode = "5"});
                 return;
             }
 
             var serviceLayer = new ServiceLayer();
-            serviceLayer.GetProfiles(Context,new string[] {Context.CurrentUserId},(listResult)=>
-            {
-                getUser.Invoke(listResult.First());
-            },errorAction);
+            serviceLayer.GetProfiles(Context,new[] {Context.CurrentUserId},listResult=>
+                { if (listResult != null) getUser.Invoke(listResult.First()); },errorAction);
         }
 
 
@@ -119,12 +112,12 @@ namespace VKCore
         public void GetUserProfile(string uid, Action<User> getUserProfileComplete, Action<Error> getUserProfileError)
         {
             var serviceLayer = new ServiceLayer();
-            serviceLayer.GetProfiles(Context,new []{uid}, (resultList)=>
-            {
-                getUserProfileComplete.Invoke(resultList.First());
-            }, getUserProfileError);
-
-
+            serviceLayer.GetProfiles(Context,new []{uid},
+                                     delegate(List<User> resultList)
+                                         {
+                                             if (resultList == null) throw new ArgumentNullException("resultList");
+                                             getUserProfileComplete.Invoke(resultList.First());
+                                         }, getUserProfileError);
         }
 
         public void GetUserProfiles(List<string> uids, Action<List<User>> getUserProfileComplete, Action<Error> getUserProfileError)
@@ -159,22 +152,22 @@ namespace VKCore
 
         public bool IsAuthorized()
         {
-            return entityDataStorage.LoadEntity<AuthorizationContext>()!=null;
+            return _entityDataStorage.LoadEntity<AuthorizationContext>()!=null;
         }
 
         public void RestoreContext()
         {
-            Context = entityDataStorage.LoadEntity<AuthorizationContext>();
+            Context = _entityDataStorage.LoadEntity<AuthorizationContext>();
         }
 
         public void DeleteContext()
         {
-            entityDataStorage.DeleteEntity<AuthorizationContext>();
+            _entityDataStorage.DeleteEntity<AuthorizationContext>();
         }
 
         public string GetCurrentUid()
         {
-            return this.Context.CurrentUserId;
+            return Context.CurrentUserId;
         }
     } 
 }

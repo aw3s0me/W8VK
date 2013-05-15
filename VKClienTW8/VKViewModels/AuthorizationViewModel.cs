@@ -1,15 +1,16 @@
 using System;
-using System.Windows;
-using Microsoft.Phone.Controls;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.Services;
+using VKCore;
+using VKModel.Entities;
+using VKServiceLayer;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
-namespace VkontakteViewModel
+
+namespace VKViewModels
 {
     public class AuthorizationViewModel : BaseViewModel
     {
-        const string AppId = "2416563";
+        const string AppId = "3592067";
 
         public Uri GetUri()
         {
@@ -20,31 +21,25 @@ namespace VkontakteViewModel
         public void ParseUri(Uri uri)
         {
             var result = AuthorizationHelper.ParseNavigatedUrl(uri.ToString());
-            if (result.Status == AuthorzationStatus.Success)
+            if (result.Status == AuthorizationStatus.Success)
             {
-                this.GetService<IVkontakteApi>().Initialize(result.Context);
-                
-
+                GetService<IVkApi>().Initialize(result.Context);
                 //(Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
-                (Application.Current.RootVisual as PhoneApplicationFrame).GoBack();
-
-                
-
+                var curFrame = Window.Current.Content as Frame;
+                if (curFrame!=null)
+                    if (curFrame.CanGoBack)
+                        curFrame.GoBack();
             }
         }
 
         public void RestoreContext()
         {
-            GetService<IVkontakteApi>().RestoreContext();
-            
-            
-            
+            GetService<IVkApi>().RestoreContext();
         }
 
         public bool IsAuthorized
         {
-            get { return GetService<IVkontakteApi>().Authorized(); }
-            
+            get { return GetService<IVkApi>().IsAuthorized(); }
         }
     }
 }

@@ -1,30 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Shell;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.ItemsViewModel;
-using VkontakteViewModel.Resources;
-using VkontakteViewModel.Services;
+using VKCore;
+using VKModel.Entities;
+using VKViewModels.ItemsViewModels;
+using VKViewModels.Resources;
+using Windows.ApplicationModel;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class MessageConversationPageViewModel : BaseViewModel
     {
         public MessageConversationPageViewModel()
         {
-            if (DesignerProperties.IsInDesignTool)
+            if (DesignMode.DesignModeEnabled)
             {
                 FillDesignTimeData();
             }
@@ -32,7 +23,7 @@ namespace VkontakteViewModel
 
         private void FillDesignTimeData()
         {
-            var user = new User() { FirstName = "Имя", LastName = "Фамилия", Nickname = "Ник", PhotoMedium = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg", Uid = "12345" };
+            var user = new User() { FirstName = "Имя", LastName = "Фамилия", NickName = "Ник", PhotoMedium = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg", Uid = "12345" };
             var users = new[] { user };
             var message = new MessageViewModel(new Message()
             {
@@ -40,8 +31,8 @@ namespace VkontakteViewModel
                 Uid = user.Uid,
                 Title = "title of message",
                 Date = new DateTime(2010, 05, 05, 04, 04, 04),
-                IsNewMessage = false,
-                Mid = "0123"
+                IsNewMsg = false,
+                MsgId = "0123"
             }, users, "0123");
 
             var messageOut = new MessageViewModel(new Message()
@@ -50,9 +41,9 @@ namespace VkontakteViewModel
                 Uid = user.Uid,
                 Title = "title",
                 Date = new DateTime(2010, 05, 05, 04, 04, 04),
-                IsNewMessage = false,
-                Mid = "0123",
-                IsOut = true,
+                IsNewMsg = false,
+                MsgId = "0123",
+                IsOutMsg = true,
             }, users, "12345");
             messages = new List<MessageViewModel>()
                  {
@@ -114,24 +105,24 @@ namespace VkontakteViewModel
             set { messages = value; OnPropertyChange("Messages"); }
         }
 
-        public int ScreenWidth
+        /*public int ScreenWidth
         {
             get
             {
                 return base.IsPortraitOrientation ? 440 : 600;
             }
-        }
+        } */
 
-        public void OrientationChanged(Microsoft.Phone.Controls.OrientationChangedEventArgs e)
+        /*public void OrientationChanged(OrientationChangedEventArgs e)
         {
             OnPropertyChange("ScreenWidth");
-        }
+        } */
 
         public void SendMessage()
         {
             var uid = GetStateOrUrlParam("uid");
             var textmessage = NewMessageText;
-            this.GetService<IVkontakteApi>().SendMessage(uid, textmessage, ()=>
+            this.GetService<IVkApi>().SendMessage(uid, textmessage, ()=>
             {
                 NewMessageText = String.Empty;
                 UpdateMessages();
@@ -147,7 +138,7 @@ namespace VkontakteViewModel
         }
 
 
-        public override void OnNavigatedTo(Microsoft.Phone.Controls.PhoneApplicationPage page, System.Windows.Navigation.NavigationEventArgs e)
+        public override void OnNavigatedTo(Page page, NavigationEventArgs e)
         {
             base.OnNavigatedTo(page, e);
 
@@ -160,18 +151,18 @@ namespace VkontakteViewModel
         private void UpdateMessages()
         {
             var uid = GetStateOrUrlParam("uid");
-            var currentUid = GetService<IVkontakteApi>().GetCurrentUid();
+            var currentUid = GetService<IVkApi>().GetCurrentUid();
 
 
-            this.GetService<IVkontakteApi>().GetUserProfile(uid, (user) =>
+            this.GetService<IVkApi>().GetUserProfile(uid, (user) =>
             {
                 UserViewModel = new UserViewModel(user);
-                GetService<IVkontakteApi>().GetMessageConversation(uid, resultMessages =>
+                GetService<IVkApi>().GetMessageConversation(uid, resultMessages =>
                 {
                     var uids = resultMessages.Select(i => i.Uid).ToList();
                     uids.Add(currentUid);
 
-                    GetService<IVkontakteApi>().GetUserProfiles(uids, profiles =>
+                    GetService<IVkApi>().GetUserProfiles(uids, profiles =>
                     {
                         var messageViewModels = resultMessages.OrderBy(i => i.Date).Select(
                             i => new MessageViewModel(i, profiles, currentUid)).
@@ -211,7 +202,7 @@ namespace VkontakteViewModel
         public void PinToStart()
         {
             var uid = GetStateOrUrlParam("uid");
-            GetService<IVkontakteApi>().GetUserProfile(uid,user =>
+            GetService<IVkApi>().GetUserProfile(uid,user =>
             {
                 var userViewModel = new UserViewModel(user);
 

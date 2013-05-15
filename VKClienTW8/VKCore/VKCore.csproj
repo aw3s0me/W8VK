@@ -99,12 +99,12 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="VKApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="VKModel">
-      <HintPath>..\..\VKontakteCore\VKModel.Entities\bin\Debug\VKModel.dll</HintPath>
+      <HintPath>..\VKModel.dll</HintPath>
     </Reference>
     <Reference Include="VKServiceLayer">
       <HintPath>..\..\VKontakteCore\VKServiceLayer\bin\x86\Debug\VKServiceLayer.dll</HintPath>

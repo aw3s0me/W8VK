@@ -1,4 +1,4 @@
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class MainMenuPageViewModel : BaseViewModel
     {

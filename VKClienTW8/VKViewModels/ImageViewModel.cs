@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Windows.ApplicationModel;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Media.Imaging;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class ImageViewModel : BaseViewModel
     {
         private static BitmapImage BitmapPreview { get; set; }
+        
         
         public ImageViewModel(string url)
         {
@@ -25,25 +17,25 @@ namespace VkontakteViewModel
                 BitmapPreview=new BitmapImage(new Uri("/Imagees/PreloadImage.png",UriKind.Relative));
             }
             Image = BitmapPreview;
-            if (DesignerProperties.IsInDesignTool)
+            if (DesignMode.DesignModeEnabled)
             {
                 return;
             }
             
-            var client = new WebClient();
+            /*var client = new WebClient();
             client.OpenReadCompleted += ClientOpenReadCompleted;
-            client.OpenReadAsync(new Uri(url));
+            client.OpenReadAsync(new Uri(url)); */
         }
 
 
-        void ClientOpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
+/*        void ClientOpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
         {
             //Dispatcher.BeginInvoke(() => {
             var img = new BitmapImage();
             img.SetSource(e.Result);
             Image = img;
             //});
-        }
+        } */
 
         private BitmapImage bitmapImage;
         public BitmapImage Image
@@ -51,7 +43,7 @@ namespace VkontakteViewModel
             get { return bitmapImage; }
             set
             {
-                Dispatcher.BeginInvoke(() =>
+                Dispatcher.RunAsync(CoreDispatcherPriority.Normal,() =>
                 {
                     bitmapImage = value;
                     OnPropertyChange("Image");

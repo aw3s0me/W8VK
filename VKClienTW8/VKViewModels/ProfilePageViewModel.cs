@@ -1,19 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.ItemsViewModel;
-using VkontakteViewModel.Resources;
-using VkontakteViewModel.Services;
+using VKCore;
+using VKModel.Entities;
+using VKViewModels.ItemsViewModels;
+using VKViewModels.Resources;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-namespace VkontakteViewModel
+namespace VKViewModels
 {
     public class ProfilePageViewModel : BaseViewModel
     {
@@ -36,13 +30,13 @@ namespace VkontakteViewModel
             set { userViewModel = value; OnPropertyChange("UserViewModel"); }
         }
 
-        public override void OnNavigatedTo(PhoneApplicationPage page, NavigationEventArgs e)
+        public override void OnNavigatedTo(Page page, NavigationEventArgs e)
         {
             base.OnNavigatedTo(page,e);
 
             var uid = GetStateOrUrlParam("uid");
             userViewModel=new UserViewModel(new User() { Uid = uid});
-            GetService<IVkontakteApi>().GetUserProfile(uid, GetUserProfileComplete, GetUserProfileError);
+            GetService<IVkApi>().GetUserProfile(uid, GetUserProfileComplete, GetUserProfileError);
         }
 
         public ICommand OpenMessageConversationCommand { get; set; }

@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using VkontakteCore;
-using VkontakteInfrastructure.Model;
-using VkontakteViewModel.ItemsViewModel;
-using VkontakteViewModel.Services;
+﻿using System.Windows.Input;
+using VKCore;
+using VKModel.Entities;
+using VKViewModels;
+using VKViewModels.ItemsViewModels;
+using Windows.ApplicationModel;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-namespace VkontakteViewModel
+
+namespace VkViewModels
 {
     public class HomePageViewModel : BaseViewModel
     {
@@ -29,14 +20,14 @@ namespace VkontakteViewModel
 
         public HomePageViewModel()
         {
-            if(DesignerProperties.IsInDesignTool)
+            if (DesignMode.DesignModeEnabled)
             {
                 userViewModel =
                     new UserViewModel(new User()
                     {
                         FirstName = "Имя",
                         LastName = "Фамилия",
-                        Nickname = "Ник",
+                        NickName = "Ник",
                         PhotoMedium = "http://cs615.vkontakte.ru/u457829/a_d81aa14a.jpg"
                     });
             }
@@ -51,7 +42,7 @@ namespace VkontakteViewModel
 
         private void PhotoViewCommand(object parameter)
         {
-            GetService<ISimpleNavigationService>().NavigateToPhotoAlbumPage(GetService<IVkontakteApi>().GetCurrentUid());
+            GetService<ISimpleNavigationService>().NavigateToPhotoAlbumPage(GetService<IVkApi>().GetCurrentUid());
         }
 
         public ICommand MessagesViewCommand { get; set; }
@@ -59,14 +50,14 @@ namespace VkontakteViewModel
         public ICommand FriendsViewCommand { get; set; }
 
 
-        public override void OnNavigatedTo(PhoneApplicationPage page, NavigationEventArgs e)
+        public override void OnNavigatedTo(Page page, NavigationEventArgs e)
         {
             base.OnNavigatedTo(page,e);
             if(userViewModel==null)
             {
-                GetService<IVkontakteApi>().GetCurrentUserProfile(GetUser, (error)=>
+                GetService<IVkApi>().GetCurrentUserProfile(GetUser, (error)=>
                 {
-                    GetService<ICommonErrorHandler>().HandleError(error);
+                    //GetService<ICommonErrorHandler>().HandleError(error);
                 });
             }
         }
