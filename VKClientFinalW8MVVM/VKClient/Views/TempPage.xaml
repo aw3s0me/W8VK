@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="VKClient.Views.TempPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VKClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid HorizontalAlignment="Left" Height="104" VerticalAlignment="Top" Width="1366" Background="{StaticResource AccentBrush}"/>
+        <Grid HorizontalAlignment="Left" Height="664" VerticalAlignment="Top" Width="1366" Margin="0,104,0,0" Background="GhostWhite">
+            <Grid Height="644" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1346" Margin="10" Background="{StaticResource AccentBrush60}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="87*"/>
+                    <RowDefinition Height="557*"/>
+                </Grid.RowDefinitions>
+                <WebView x:Name="WebBrowser" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="508" Width="1326" Margin="10,10,10,0" Grid.Row="1" UseLayoutRounding="True"/>
+
+            </Grid>
+        <!--    <Button Style="{StaticResource FullScreenAppBarButtonStyle}" HorizontalAlignment="Left" Margin="1265,27,0,0" VerticalAlignment="Top" Height="63" Width="79" Click="Button_Click_1"/>
+            <Button Style="{StaticResource NoAppBarButtonStyle}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" Height="63" 
+                    Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" RenderTransformOrigin="0.476,-0.762"/>  -->
+        </Grid>
+    </Grid>
+</Page>

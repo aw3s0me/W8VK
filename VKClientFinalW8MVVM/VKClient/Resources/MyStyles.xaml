@@ -1,0 +1,26 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VKClient.Resources">
+   <Color x:Key="AccentColor">#0b4f99</Color>
+
+   <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+        <!-- Sidebar background -->
+   <SolidColorBrush x:Key="AccentBrush60" Color="#072f5c"/>
+        <!-- Content background -->
+   <SolidColorBrush x:Key="AccentBrush35" Color="#052345"/>
+
+    <!-- Back button -->
+    <SolidColorBrush x:Key="BackButtonForegroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="BackButtonPressedBackgroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="BackButtonPressedForegroundBrush" Color="Black"/>
+
+    <!-- Sort combobox -->
+    <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundBrush" Color="Gray"/>
+    <SolidColorBrush x:Key="ComboBoxItemHoverBackgroundBrush" Color="LightGray"/>
+
+    <!-- Separator -->
+    <SolidColorBrush x:Key="SeparatorBrush" Color="White"/>
+
+    
+</ResourceDictionary>

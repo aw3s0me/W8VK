@@ -1,0 +1,107 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    x:Class="VKClient.Views.MessagesViewPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VKClient.Views"
+    xmlns:common="using:VKClient.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Callisto.Controls"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Background="{StaticResource AccentBrush60}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+        <TextBlock x:Name="pageTitle" Grid.Column="1" x:Uid="messagesPageTitle" Style="{StaticResource PageHeaderTextStyle}" FontSize="40" Margin="0,0,5,40"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="dialogsHeader" x:Uid="dialogsHeader" Text="Диалоги" Style="{StaticResource SubheaderTextStyle}"                               Margin="0,5" HorizontalAlignment="Center" Foreground="#FF7461B4"/>
+            <TextBlock x:Name="friendsHeader" x:Uid="friendsHeader" Text="Друзья" Style="{StaticResource SubheaderTextStyle}" Grid.Column="1"                               Margin="0,5" HorizontalAlignment="Center"/>
+            <Grid x:Name="dialogs" Grid.Row="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                <ListView x:Name="dialogsListView" ItemsSource="{Binding DialogsList, ElementName=pageRoot}"
+                          SelectedIndex="{Binding SelectedDialog, ElementName=pageRoot, Mode=TwoWay}" 
+                          Foreground="White" IncrementalLoadingTrigger="Edge">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="50" Width="50" Source="{Binding PhotoUri}"/>
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource SubheaderTextStyle}" Margin="10,0,0,0" TextTrimming="None" TextWrapping="NoWrap"/>
+                                <TextBlock x:Name="status" Text="{Binding IsDialogOnlineToString}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ProgressBar x:Name="dialogsLoading" Background="Transparent" IsIndeterminate="False" VerticalAlignment="Bottom"/>
+            </Grid>
+            <Grid x:Name="friends" Grid.Row="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform TranslateX="400"/>
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <controls:WatermarkTextBox x:Name="friendsSearchBox" x:Uid="searchBox" Watermark="Поиск.." VerticalAlignment="Center" Margin="20,5,0,0"/>
+                    <Button Grid.Column="1" Content="&#xE094;" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,0" FontFamily="Segoe UI Symbol"                       />
+                    <Grid Grid.Row="1" Margin="0,5,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="AllFriends" x:Uid="allFriends" Grid.Column="0" Text="Все" Style="{StaticResource SubheaderTextStyle}" FontSize="22"                              HorizontalAlignment="Right" Margin="0,0,50,0"/>
+                        <TextBlock x:Name="OnlineFriends" x:Uid="onlineFriends" Grid.Column="1" Text="Онлайн" Style="{StaticResource SubheaderTextStyle}" FontSize="22"                                 HorizontalAlignment="Left" Margin="0,0,50,0"/>
+                    </Grid>
+                </Grid>
+                <ListView x:Name="friendsListView"  Grid.Row="2" Grid.ColumnSpan="2" 
+                          ItemsSource="{Binding ChangingFriendsList, ElementName=pageRoot}"
+                          SelectionMode="Extended" IsItemClickEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="50" Width="50" Source="{Binding photo}"/>
+                                <TextBlock Text="{Binding userToString}" Style="{StaticResource SubheaderTextStyle}" Margin="10,0,0,0" TextTrimming="None" TextWrapping="NoWrap"/>
+                                <TextBlock x:Name="status" Text="{Binding isOnlineToString}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</common:LayoutAwarePage>
