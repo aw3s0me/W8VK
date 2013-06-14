@@ -15,67 +15,55 @@ namespace VKClient.Services
             set;
         }
 
-        public Boolean AutoNowPlaying
+        public bool AutoNowPlaying
         {
             get;
             set;
         }
 
-        public String ColorScheme
+        public string ColorScheme
         {
             get;
             set;
         }
 
-        public Boolean EnableScrobbling
+        public bool EnableScrobbling
         {
             get;
             set;
         }
 
-        public Boolean EnableStatusBroadcasting
+        public bool EnableStatusBroadcasting
         {
             get;
             set;
         }
 
-        public Boolean IsMuted
+        public bool IsMuted
         {
             get;
             set;
         }
 
-        public String LastFmSession
+        public bool Repeat
         {
             get;
             set;
         }
 
-        public String LastFmUsername
+        public bool ShowToasts
         {
             get;
             set;
         }
 
-        public Boolean Repeat
+        public bool Shuffle
         {
             get;
             set;
         }
 
-        public Boolean ShowToasts
-        {
-            get;
-            set;
-        }
-
-        public Boolean Shuffle
-        {
-            get;
-            set;
-        }
-
-        public String UserId
+        public string UserId
         {
             get;
             set;
@@ -111,8 +99,6 @@ namespace VKClient.Services
                 this.AutoNowPlaying = this.Get<Boolean>("AutoNowPlaying", true);
                 this.EnableStatusBroadcasting = this.Get<Boolean>("EnableStatusBroadcasting", false);
                 this.EnableScrobbling = this.Get<Boolean>("EnableScrobbling", false);
-                this.LastFmUsername = this.Get<String>("LastFmUsername", String.Empty);
-                this.LastFmSession = this.Get<String>("LastFmSession", String.Empty);
             }
             catch (Exception ex)
             {
@@ -137,8 +123,6 @@ namespace VKClient.Services
                 this.Set<Boolean>("AutoNowPlaying", this.AutoNowPlaying);
                 this.Set<Boolean>("EnableStatusBroadcasting", this.EnableStatusBroadcasting);
                 this.Set<Boolean>("EnableScrobbling", this.EnableScrobbling);
-                this.Set<String>("LastFmUsername", this.LastFmUsername);
-                this.Set<String>("LastFmSession", this.LastFmSession);
             }
             catch (Exception ex)
             {

@@ -33,6 +33,10 @@ namespace VKClient.Services
             ApplicationService.Instance.Settings.AccessToken = accessToken.Token;
             ApplicationService.Instance.Settings.UserId = accessToken.UserId;
             ApplicationService.Instance.Settings.Save();
+            var vault = new Windows.Security.Credentials.PasswordVault();
+            vault.Add(new Windows.Security.Credentials.PasswordCredential(
+                "VkApp", ApplicationService.Instance.Settings.UserId, ApplicationService.Instance.Settings.AccessToken));
+            //var vault = new PasswordVault();
             Messenger.Default.Send<LoginMessage>(new LoginMessage
             {
                 Type = LoginType.LogIn,
@@ -46,11 +50,14 @@ namespace VKClient.Services
         }
         public void LogOutVk()
         {
+            var vault = new Windows.Security.Credentials.PasswordVault();
+            vault.Remove(vault.Retrieve("VkApp", ApplicationService.Instance.Settings.UserId));
             this._vkontakte.AccessToken.Token = null;
             this._vkontakte.AccessToken.UserId = null;
             ApplicationService.Instance.Settings.AccessToken = null;
             ApplicationService.Instance.Settings.UserId = null;
             ApplicationService.Instance.Settings.Save();
+            
             Messenger.Default.Send<LoginMessage>(new LoginMessage
             {
                 Type = LoginType.LogOut,
@@ -59,11 +66,11 @@ namespace VKClient.Services
         }
         public bool IsLoggedInVk(bool goToLoginIfFalse = true)
         {
-            if (this._vkontakte.AccessToken != null && !string.IsNullOrEmpty(this._vkontakte.AccessToken.Token) && !string.IsNullOrEmpty(this._vkontakte.AccessToken.UserId))
+            if (this._vkontakte.AccessToken != null && !String.IsNullOrEmpty(this._vkontakte.AccessToken.Token) && !String.IsNullOrEmpty(this._vkontakte.AccessToken.UserId))
             {
                 return true;
             }
-            if (!string.IsNullOrEmpty(ApplicationService.Instance.Settings.AccessToken))
+            if (!String.IsNullOrEmpty(ApplicationService.Instance.Settings.AccessToken))
             {
                 this.SetLoginInfoVk();
                 return true;
@@ -82,7 +89,7 @@ namespace VKClient.Services
             return false;
         }
         
-        private void SetLoginInfoVk()
+        public void SetLoginInfoVk()
         {
             this._vkontakte.AccessToken.Token = ApplicationService.Instance.Settings.AccessToken;
             this._vkontakte.AccessToken.UserId = ApplicationService.Instance.Settings.UserId;
@@ -92,5 +99,8 @@ namespace VKClient.Services
                 IsSuccess = true
             });
         }
+
+        
+
     }
 }

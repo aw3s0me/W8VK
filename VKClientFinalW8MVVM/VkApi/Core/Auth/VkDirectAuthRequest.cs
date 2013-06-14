@@ -50,14 +50,16 @@ namespace VkApi.Core.Auth
                 var responseString = webAuthResult.ResponseData.ToString();
                 char[] separators = {'=', '&'};
                 string[] responseContent = responseString.Split(separators);
-                string AccessToken = responseContent[1];
+                string accessToken = responseContent[1];
                 int userId = Int32.Parse(responseContent[5]);
-                int Expires_In_Seconds = Int32.Parse(responseContent[3]);
+                int expiresInSeconds = Int32.Parse(responseContent[3]);
+                
                 return new AccessToken
                     {
-                        Token = AccessToken,
+                        Token = accessToken,
                         UserId = userId.ToString(),
-                        ExpiresIn = DateTime.Now.AddSeconds(Expires_In_Seconds)
+                        //ExpiresIn = DateTime.Now.AddSeconds(expiresInSeconds)
+                        ExpiresIn = expiresInSeconds == 0 ? DateTime.MaxValue : DateTime.Now.AddSeconds(expiresInSeconds)
                     };
             }
             else

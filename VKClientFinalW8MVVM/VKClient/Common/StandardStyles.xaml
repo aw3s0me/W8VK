@@ -1755,6 +1755,18 @@
         <Setter Property="Content" Value="&#xE130;"/>
     </Style>
 
+    <Style x:Key="MySwitchAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="MySwitchAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Сменить пользователя"/>
+        <Setter Property="Content" Value="&#xE13C;"/>
+    </Style>
+
+    <Style x:Key="MyExitAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="MyExitAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Выход"/>
+        <Setter Property="Content" Value="&#xE10A;"/>
+    </Style>
+    
     <Style x:Key="MyVideoesAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
         <Setter Property="AutomationProperties.AutomationId" Value="MyVideoesAppBarButton"/>
         <Setter Property="AutomationProperties.Name" Value="Мои Видеозаписи"/>
@@ -1771,6 +1783,12 @@
         <Setter Property="AutomationProperties.AutomationId" Value="MyGroupsAppBarButton"/>
         <Setter Property="AutomationProperties.Name" Value="Мои Группы"/>
         <Setter Property="Content" Value="&#xE136;"/>
+    </Style>
+
+    <Style x:Key="MySettingsAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="MySettingsAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Настройки"/>
+        <Setter Property="Content" Value="&#xE115;"/>
     </Style>
 
     <Style x:Key="MyProfileAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">

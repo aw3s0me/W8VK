@@ -118,6 +118,10 @@
     <Compile Include="Core\PhotoAlbums\VkPhotoAlbum.cs" />
     <Compile Include="Core\PhotoAlbums\VkPhotoAlbumsRequest.cs" />
     <Compile Include="Core\PhotoAlbums\VkPhotoRequest.cs" />
+    <Compile Include="Core\Profile\VkCity.cs" />
+    <Compile Include="Core\Profile\VkCityRequest.cs" />
+    <Compile Include="Core\Profile\VkCountry.cs" />
+    <Compile Include="Core\Profile\VkCountryRequest.cs" />
     <Compile Include="Core\Profile\VkProfile.cs" />
     <Compile Include="Core\Profile\VkProfileBase.cs" />
     <Compile Include="Core\Profile\VkUsersRequest.cs" />
@@ -144,6 +148,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\MyVKontakte\VKontakteCore\Json50r3\Bin\WinRT\Newtonsoft.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

@@ -44,13 +44,14 @@
                     <Button x:Name="MyVideosButton" Style="{StaticResource MyVideoesAppBarButtonStyle}" Click="MyVideoesClicked"/>
                     <Button x:Name="MyAudioButton" Style="{StaticResource MyAudioAppBarButtonStyle}" Click="MyAudioClicked"/>
                     <Button x:Name="MyGroupsButton" Style="{StaticResource MyGroupsAppBarButtonStyle}" Click="MyGroupsClicked"/>
-               <!--     <Button x:Name="MyMessagesButton" Style="{StaticResource MyMessagesAppBarButtonStyle}" Click="MyMessagesClicked"/>
-                    <Button x:Name="MyNewsButton" Style="{StaticResource MyNewsAppBarButtonStyle}" Click="MyNewsClicked"
-                   
-                    /> -->
-
+                    <Button x:Name="MyMessagesButton" Style="{StaticResource MyMessagesAppBarButtonStyle}" Click="MyMessagesClicked"/>
+                    <Button x:Name="MyNewsButton" Style="{StaticResource MyNewsAppBarButtonStyle}" Click="MyNewsClicked"/> 
                 </StackPanel>
-
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="MyOptionButton" Style="{StaticResource MySettingsAppBarButtonStyle}" Click="MyOptionButton_Click" />
+                    <Button x:Name="MySwitchButton" Style="{StaticResource MySwitchAppBarButtonStyle}" Click="MySwitchButton_Click" />
+                    <Button x:Name="MyExitButton" Style="{StaticResource MyExitAppBarButtonStyle}" Click="MyExitButton_Click" />
+                </StackPanel>
             </Grid>
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
@@ -75,193 +76,101 @@
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Text="Профиль" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
-        <Grid  Width="Auto" Margin="0,5,0,0" Grid.Row="1"
-            >
+        <Grid  Width="Auto" Margin="0,5,0,0" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="0*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="{Binding ProfileImage}" Stretch="UniformToFill" HorizontalAlignment="Left" Height="270" Margin="165,46,0,0" VerticalAlignment="Top" Width="225"/>
-            <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" Margin="165,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="41" Width="252" FontSize="22" FontWeight="Bold"/>
-            <GridView x:Name="GridViewToFrinedsPhoto" Margin="461,0,0,0"
+            <ScrollViewer HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
+                
+                <Grid Width="Auto" Visibility="Visible">
+                    <Controls:LiveTile HorizontalAlignment="Left" Margin="20,101,0,0" VerticalAlignment="Top" Width="109" Height="137" Background="LightGreen">
+                        <Controls:LiveTile.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Button Style="{StaticResource MyGroupsAppBarButtonStyle}" Margin="0,0,0,41" Grid.RowSpan="2"/>
+
+                                    <HyperlinkButton 
+                						HorizontalAlignment="Right"
+                						Foreground="LightGray"
+                						Click="GroupClicked" Height="129" Grid.RowSpan="2" Width="90" />
+                                </Grid>
+                            </DataTemplate>
+                        </Controls:LiveTile.ItemTemplate>
+
+                    </Controls:LiveTile>
+                    <Controls:LiveTile HorizontalAlignment="Left" Margin="20,273,0,0" VerticalAlignment="Top" Width="109" Height="151" Background="Violet">
+                        <Controls:LiveTile.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Button Style="{StaticResource MyAudioAppBarButtonStyle}" Margin="0,0,0,41" Grid.RowSpan="2"/>
+
+                                    <HyperlinkButton
+                    					HorizontalAlignment="Right"
+                                   
+                    					Foreground="LightGray"
+                    					FontSize="9" FontWeight="Bold" Click="ProfileAudios" Height="139" Grid.RowSpan="2" Width="99" />
+                                </Grid>
+                            </DataTemplate>
+                        </Controls:LiveTile.ItemTemplate>
+                    </Controls:LiveTile>
+                    <Image Source="{Binding ProfileImage}" Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270" Margin="165,125,0,0" Width="225"/>
+                    <TextBlock Text="{Binding Name}" Margin="165,5,0,531" TextWrapping="Wrap" HorizontalAlignment="Left" Width="291" FontSize="22" FontWeight="Bold"/>
+                    <GridView x:Name="GridViewToFrinedsPhoto" Margin="461,0,0,0"
                                   ItemsSource="{Binding Mode=TwoWay, Source={StaticResource groupedItemsViewSource}}" 
                                   ItemTemplate="{StaticResource MyPhotoItemTemplate}"
                                   SelectionMode="Single"
                                   IsItemClickEnabled="True"
                                   
                                   IsSwipeEnabled="false" ItemClick="GridViewToFrinedsPhoto_ItemClick">
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-                <GridView.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate>
-                                <Grid Margin="1,0,0,6">
-                                    <Button
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                        <GridView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="1,0,0,6">
+                                            <Button
                                     x:Name="ColumnBtn"
                                     AutomationProperties.Name="Group Title" AutomationProperties.LabeledBy="{Binding Title}"
                                     Style="{StaticResource TextPrimaryButtonStyle}" Click="Button_Click_1">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
-                                            <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource GroupHeaderTextStyle}"/>
-                                        </StackPanel>
-                                    </Button>
-                                </Grid>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                        <GroupStyle.Panel>
-                            <ItemsPanelTemplate>
-                                <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0"/>
-                            </ItemsPanelTemplate>
-                        </GroupStyle.Panel>
-                    </GroupStyle>
-                </GridView.GroupStyle>
-                <!--         <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid HorizontalAlignment="Left" Width="160" Height="160">
-                        <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
-                            <Image Source="{Binding PhotoSrc, Mode=TwoWay}" Stretch="UniformToFill"/>
-                        </Border>
-                        <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                           <TextBlock Text ="{Binding FirstName}"
-                                       Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}"
-                                       Style="{StaticResource TitleTextStyle}"
-                                       Margin="15,0,15,0"/>
-                            <TextBlock Text ="{Binding LastName}"
-                                       Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}"
-                                       Style="{StaticResource TitleTextStyle}"
-                                       Margin="15,0,15,0"/> 
-                            <TextBlock Text ="{Binding Title, Mode=TwoWay}"
-                                       Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}"
-                                       Style="{StaticResource CaptionTextStyle}"
-                                       TextWrapping="NoWrap"
-                                       Margin="15,0,15,10"/>
-                        </StackPanel>
-                    </Grid>
-
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        
-                             <DataTemplate> 
-                            <Grid Margin="1,0,0,6">
-                                <Button Style="{StaticResource TextPrimaryButtonStyle}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding GroupName}"
-                                                   Margin="3,-7,0,10"
-                                                   Style="{StaticResource GroupHeaderTextStyle}"/>
-                                        <TextBlock Text="{Binding GroupName}"
-                                                   Margin="3,-7,0,10"
-                                                   Style="{StaticResource GroupHeaderTextStyle}"/>
-                                        <TextBlock Text="{StaticResource ChevronGlyph}"
-                                                   FontFamily="Segoe UI Symbol"
-                                                   Margin="0,-7,0,10"
-                                                   Style="{StaticResource GroupHeaderTextStyle}"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                    <GroupStyle.Panel>
-                        <ItemsPanelTemplate>
-                            <VariableSizedWrapGrid Orientation="Vertical"
-                                                   Margin="0,0,80,0"
-                                                   ItemWidth="160"
-                                                   ItemHeight="160"/>
-                        </ItemsPanelTemplate>
-                    </GroupStyle.Panel>
-                </GroupStyle>
-            </GridView.GroupStyle> -->
-            </GridView>
-
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
+                                                    <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource GroupHeaderTextStyle}"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0"/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </GridView.GroupStyle>
+                        </GridView>
+                        <TextBlock Text="{Binding Info}" HorizontalAlignment="Left" Margin="165,423,0,-25" TextWrapping="Wrap" VerticalAlignment="Top" Height="225" Width="225"/>
+                </Grid>  
+            </ScrollViewer>
         </Grid>
 
         
-     <!--   <vkControls:PhotoGridView x:Name="GridViewToYourPhotos" Margin="626,26,424,305" Grid.Row="1"/> -->
-
-        <Controls:LiveTile HorizontalAlignment="Left" Margin="20,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="109" Height="137" Background="LightGreen">
-            <Controls:LiveTile.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        
-                        <Button Style="{StaticResource MyGroupsAppBarButtonStyle}" Margin="0,0,0,41" Grid.RowSpan="2"></Button>
-                        
-                        <HyperlinkButton 
-                                   HorizontalAlignment="Right"
-                                   Foreground="LightGray"
-                                   Click="GroupClicked" Height="129" Grid.RowSpan="2" Width="90" />
-                    </Grid>
-                </DataTemplate>
-            </Controls:LiveTile.ItemTemplate>
-
-        </Controls:LiveTile>
-      <!--  <Controls:LiveTile HorizontalAlignment="Left" Margin="20,216,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="107" Background="Orange" FontSize="9">
-            <Controls:LiveTile.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Text="{Binding Name}" 
-                                Foreground="White" FontSize="24"
-                                FontFamily="Segoe UI Light" />
-
-                        <TextBlock Foreground="White" Text="&#xE125;"
-                                TextWrapping="Wrap"
-                                TextTrimming="WordEllipsis" 
-                                FontSize="14"
-                                Grid.Row="1" FontWeight="Bold" >
-                            <TextBlock.Projection>
-                                <PlaneProjection RotationZ="1"/>
-                            </TextBlock.Projection>
-                        </TextBlock>
-
-                        <HyperlinkButton Content="Новости" 
-                                   HorizontalAlignment="Right"
-                                   Foreground="LightGray"
-                                   Click="NewsClick" Height="97" Grid.RowSpan="2" FontSize="12" Width="90" />
-                    </Grid>
-                </DataTemplate>
-            </Controls:LiveTile.ItemTemplate>
-        </Controls:LiveTile> -->
-        <Controls:LiveTile HorizontalAlignment="Left" Margin="20,279,0,0" Grid.Row="1" VerticalAlignment="Top" Width="109" Height="151" Background="Violet">
-            <Controls:LiveTile.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Button Style="{StaticResource MyAudioAppBarButtonStyle}" Margin="0,0,0,41" Grid.RowSpan="2"></Button>
-
-                        <HyperlinkButton
-                                   HorizontalAlignment="Right"
-                                   
-                                   Foreground="LightGray"
-                                    FontSize="9" FontWeight="Bold" Click="ProfileAudios" Height="139" Grid.RowSpan="2" Width="99" />
-                    </Grid>
-                </DataTemplate>
-            </Controls:LiveTile.ItemTemplate>
-        </Controls:LiveTile>
 
     </Grid>
 </common:LayoutAwarePage>

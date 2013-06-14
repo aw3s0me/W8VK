@@ -28,12 +28,11 @@ namespace VKClient.Views
     public sealed partial class ProfileViewPage : VKClient.Common.LayoutAwarePage
     {
         private string _currentViewModelType;
+
         public ProfileViewPage()
         {
-
             this.InitializeComponent();
-            base.DataContext = new ProfileViewPageViewModel();
-            
+            base.DataContext = new ProfileViewPageViewModel();   
         }
 
         /// <summary>
@@ -50,45 +49,7 @@ namespace VKClient.Views
             // TODO: Assign a collection of bindable groups to this.DefaultViewModel["Groups"]
         }
 
-        private void MyProfileClicked(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ProfileViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
-        }
-
-        private void MyFriendsClicked(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(FriendsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
-        }
-
-        private void MyPhotoClicked(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(NewPhotoAlbumsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
-        }
-
-        private void MyVideoesClicked(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(VideoViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
-        }
-
-        private void MyAudioClicked(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AudioViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
-        }
-
-        private void MyGroupsClicked(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(GroupsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
-        }
-
-        private void MyMessagesClicked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MyNewsClicked(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void ProfileAudios(object sender, RoutedEventArgs e)
         {
@@ -235,6 +196,62 @@ namespace VKClient.Views
             {
                 var msgDlg = new MessageDialog(ex.Message);
             }
+        }
+
+        private void MyProfileClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ProfileViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
+        }
+
+        private void MyFriendsClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(FriendsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
+        }
+
+        private void MyPhotoClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewPhotoAlbumsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
+        }
+
+        private void MyVideoesClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(VideoViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
+        }
+
+        private void MyAudioClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AudioViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
+        }
+
+        private void MyGroupsClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GroupsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
+        }
+
+        private void MyMessagesClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MessagesViewPage));
+        }
+
+        private void MyNewsClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewsViewPage));
+        }
+
+        private void MyOptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(OptionViewPage));
+        }
+
+        private void MySwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModelLocator.AuthService.LogOutVk();
+            Frame.Navigate(typeof(LoginView));
+        }
+
+        private void MyExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
         }
             
         

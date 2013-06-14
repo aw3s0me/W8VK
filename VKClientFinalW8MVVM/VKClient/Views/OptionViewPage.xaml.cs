@@ -20,9 +20,9 @@ namespace VKClient.Views
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class MessagesViewPage : VKClient.Common.LayoutAwarePage
+    public sealed partial class OptionViewPage : VKClient.Common.LayoutAwarePage
     {
-        public MessagesViewPage()
+        public OptionViewPage()
         {
             this.InitializeComponent();
         }

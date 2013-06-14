@@ -557,8 +557,8 @@ namespace VKClient.Services
                 {
                     userId = new string[] {userid};
                 }
-                
-                IEnumerable<VkProfile> vkProfiles = await this._vkontakte.Users.Get(userId,"photo,photo_medium,photo_big", null);
+
+                IEnumerable<VkProfile> vkProfiles = await this._vkontakte.Users.Get(userId, "bdate,photo,photo_medium,photo_big,city,education,country,schools", null);
                 IEnumerable<VkProfile> vkProfiles1 = vkProfiles;
                 if (vkProfiles1 == null)
                 {
@@ -575,6 +575,53 @@ namespace VKClient.Services
                     str.Photo = vkProfile.Photo;
                     str.PhotoBig = vkProfile.PhotoBig;
                     str.PhotoMedium = vkProfile.PhotoMedium;
+                    str.UniversityName = vkProfile.Education;
+                    if (!(String.IsNullOrEmpty(vkProfile.City)||vkProfile.City=="0"))
+                    {
+                        IEnumerable<VkCity> citiesRes = await this._vkontakte.City.Get(new string[] { vkProfile.City });
+                        if (citiesRes.Any())
+                            str.City = citiesRes.First().Name;
+                    }
+                    if (!(String.IsNullOrEmpty(vkProfile.Country) || vkProfile.Country == "0"))
+                    {
+                        IEnumerable<VkCountry> countryRes = await this._vkontakte.Country.Get(new string[] { vkProfile.Country });
+                        if (countryRes.Any())
+                            str.Country = countryRes.First().Name;
+                    }
+                    
+                    if (!String.IsNullOrEmpty(vkProfile.Birthday))
+                    {
+                        str.BirthDate = String.Empty;
+                        string[] dateElements = vkProfile.Birthday.Split(new Char[] { '.' });
+                        if (!String.IsNullOrEmpty(dateElements[1]))
+                        {
+                            switch (dateElements[1])
+                            {
+                                case "1": dateElements[1] = "января"; break;
+                                case "2": dateElements[1] = "фервраля"; break;
+                                case "3": dateElements[1] = "марта"; break;
+                                case "4": dateElements[1] = "апреля"; break;
+                                case "5": dateElements[1] = "мая"; break;
+                                case "6": dateElements[1] = "июня"; break;
+                                case "7": dateElements[1] = "июля"; break;
+                                case "8": dateElements[1] = "августа"; break;
+                                case "9": dateElements[1] = "сентября"; break;
+                                case "10": dateElements[1] = "октября"; break;
+                                case "11": dateElements[1] = "ноября"; break;
+                                case "12": dateElements[1] = "декабря"; break;
+                                default: break;
+                            }
+                        }
+                        if (dateElements.Length == 3)
+                        {
+                            str.BirthDate = dateElements[0] + " " + dateElements[1] + " " + dateElements[2];
+                        } 
+                        else if (dateElements.Length == 2)
+                        {
+                            str.BirthDate = dateElements[0] + " " + dateElements[1];
+                        }
+                            
+                    }
                     userProfile = str;
                 }
             }

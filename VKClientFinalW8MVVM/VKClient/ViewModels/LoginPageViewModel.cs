@@ -35,6 +35,12 @@ namespace VKClient.ViewModels
             get;
             private set;
         }
+        public RelayCommand GoProfileCommand
+        {
+            get;
+            private set;
+        }
+
         public RelayCommand CancelLoginVkCommand
         {
             get;
@@ -123,6 +129,11 @@ namespace VKClient.ViewModels
         {
             this.LoginCommand = new RelayCommand(new Action(this.DoLogin));
             this.SignUpVkCommand = new RelayCommand(new Action(this.DoSignUp));
+            GoProfileCommand = new RelayCommand(delegate
+            {
+                    Frame frame = (Frame)Window.Current.Content;
+                    frame.Navigate(typeof(Views.ProfileViewPage));
+            });
             this.LoginVkCommand = new RelayCommand(delegate
             {
                 this.IsLoginFormVisible = true;

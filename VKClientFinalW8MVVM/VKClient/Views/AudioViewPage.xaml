@@ -30,17 +30,17 @@
                     <Button x:Name="MyVideosButton" Style="{StaticResource MyVideoesAppBarButtonStyle}" Click="MyVideoesClicked"/>
                     <Button x:Name="MyAudioButton" Style="{StaticResource MyAudioAppBarButtonStyle}" Click="MyAudioClicked"/>
                     <Button x:Name="MyGroupsButton" Style="{StaticResource MyGroupsAppBarButtonStyle}" Click="MyGroupsClicked"/>
-                    <!--     <Button x:Name="MyMessagesButton" Style="{StaticResource MyMessagesAppBarButtonStyle}" Click="MyMessagesClicked"/>
-                    <Button x:Name="MyNewsButton" Style="{StaticResource MyNewsAppBarButtonStyle}" Click="MyNewsClicked"
-                   
-                    /> -->
-
+                    <Button x:Name="MyMessagesButton" Style="{StaticResource MyMessagesAppBarButtonStyle}" Click="MyMessagesClicked"/>
+                    <Button x:Name="MyNewsButton" Style="{StaticResource MyNewsAppBarButtonStyle}" Click="MyNewsClicked"/>
                 </StackPanel>
-
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="MyOptionButton" Style="{StaticResource MySettingsAppBarButtonStyle}" Click="MyOptionButton_Click" />
+                    <Button x:Name="MySwitchButton" Style="{StaticResource MySwitchAppBarButtonStyle}" Click="MySwitchButton_Click" />
+                    <Button x:Name="MyExitButton" Style="{StaticResource MyExitAppBarButtonStyle}" Click="MyExitButton_Click" />
+                </StackPanel>
             </Grid>
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
-
     <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush60}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>

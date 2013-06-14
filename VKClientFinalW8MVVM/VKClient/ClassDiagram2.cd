@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VKClient.App" Collapsed="true">
+    <Position X="26" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAABAAAAAAAAAAwAAAAAQIQAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.JsonSerializable" Collapsed="true">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Settings" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAFAAIoADEQABAABAAQQAEwAUAYphBAASA8oAAAAEAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.MainView" Collapsed="true">
+    <Position X="26" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAAAAAAJAAAAA=</HashCode>
+      <FileName>MainView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Behaviours.VisibilityTransitionBehaviour" Collapsed="true">
+    <Position X="34.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAABgAAAAAAgAAAAAAAADACAIAAAAAAAAgI=</HashCode>
+      <FileName>Behaviours\VisibilityTransitionBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Common.BindableBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BindableBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Common.BooleanNegationConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BooleanNegationConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Common.BooleanToVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="34.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BooleanToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Common.LayoutAwarePage" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQgAAAACAAIAAAAAAIQAQQAAAYAA0AAAAAAAAAAUg=</HashCode>
+      <FileName>Common\LayoutAwarePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Common.RichTextColumns" Collapsed="true">
+    <Position X="26" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEAAgAAAAAAAQAAAAACAAQAAAAAgAAAAAABAAAAAA=</HashCode>
+      <FileName>Common\RichTextColumns.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Common.SuspensionManager" Collapsed="true">
+    <Position X="33" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAaIAASCBEAAAICAAAAAIAAAAAAAAAAIAAAABA=</HashCode>
+      <FileName>Common\SuspensionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Common.SuspensionManagerException" Collapsed="true">
+    <Position X="34.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\SuspensionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Converters.BooleanToVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\BooleanToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Converters.JsonTimeSpanConverter" Collapsed="true">
+    <Position X="34.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Converters\JsonTimeSpanConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Converters.ProgressSliderTooltipConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\ProgressSliderTooltipConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Converters.StringFormatConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\StringFormatConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Helpers.MessageBoxHelper" Collapsed="true">
+    <Position X="29.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\MessageBoxHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.Album">
+    <Position X="16.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEABAAAAAAAAAAQAAIAAAEgAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Album.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Models.Audio" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAIAIACAEEAIJABAQQAgIQAABAIKAgggEAAABA=</HashCode>
+      <FileName>Models\Audio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Models.AudioChangedMessage" Collapsed="true">
+    <Position X="33" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\AudioChangedMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.AudioCollection" Collapsed="true">
+    <Position X="34.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAMAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AudioCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.CurrentPlaylistChangedMessage" Collapsed="true">
+    <Position X="36.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CurrentPlaylistChangedMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.GoBackMessage" Collapsed="true">
+    <Position X="29.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GoBackMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.GoHomeMessage" Collapsed="true">
+    <Position X="31.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GoHomeMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.Group">
+    <Position X="20.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Group.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Models.LoginMessage" Collapsed="true">
+    <Position X="36.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\LoginMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.MetaData" Collapsed="true">
+    <Position X="31.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAgAIAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\MetaData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.NavigateToPageMessage" Collapsed="true">
+    <Position X="33" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\NavigateToPageMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.PlayerPositionChangedMessage" Collapsed="true">
+    <Position X="34.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PlayerPositionChangedMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.PlayStateChangedMessage" Collapsed="true">
+    <Position X="36.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PlayStateChangedMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.Video">
+    <Position X="15" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAiAEAAAAAAAAAAAAAAAAABAAAAQQCAAIQ=</HashCode>
+      <FileName>Models\Video.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Models.VkException" Collapsed="true">
+    <Position X="36.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\VkException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.Entities.AuthorizationContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAEAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\AuthorizationContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Models.Entities.AuthorizationResult" Collapsed="true">
+    <Position X="26" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AuthorizationContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.Entities.Error" Collapsed="true">
+    <Position X="26" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Error.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Models.Entities.ErrorResponse" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Error.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Models.Entities.Message" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAEAAABEBIAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Message.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Models.Entities.Photo" BaseTypeListCollapsed="true">
+    <Position X="22" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAIBiAAAAAAQAAAAEAAgAAAAAQAQAACAAIAAAA=</HashCode>
+      <FileName>Models\Photo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Models.Entities.PhotoAlbum" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAggEAAAAAAAQgAgAAAAQQAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\PhotoAlbum.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Models.Entities.UserProfile" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAMCIABKAIABEAEASAAgIAAEMAAAAAAAAgAIg=</HashCode>
+      <FileName>Models\UserProfile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Resources.AppResources" Collapsed="true">
+    <Position X="27.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAACAAAAgAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\AppResources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Services.ApplicationService" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAgAAAAAAAAAAAACAAAwAAAAAAAAAA=</HashCode>
+      <FileName>Services\ApplicationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Services.AppSettingsProvider" Collapsed="true">
+    <Position X="29.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAgAABAABAAAA=</HashCode>
+      <FileName>Services\AppSettingsProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Services.AudioService" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAxQAAABIAAAQAAAAEEAkAACAQAAMAAoAJgAgIIEAA=</HashCode>
+      <FileName>Services\AudioService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.Services.AuthService" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQAAAAAAAAAgAAggAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\AuthService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VKClient.Services.DataService">
+    <Position X="25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIhBAAoAAAABAgBAEgAQBAAQAAAgAgAEACAQBAACAAA=</HashCode>
+      <FileName>Services\DataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Services.IApplicationService&lt;TSettings&gt;" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAEAARAAIAgAAAAAAgAAAAYAAAABEiAAIAAQAA=</HashCode>
+      <FileName>Services\IApplicationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Services.NavigationService" Collapsed="true">
+    <Position X="34.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAE=</HashCode>
+      <FileName>Services\NavigationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Services.Settings" Collapsed="true">
+    <Position X="29.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAQIABABAAAAAAiiAEAAIAAAAAQIAAAAAEAA=</HashCode>
+      <FileName>Services\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.AudioViewModel" Collapsed="true">
+    <Position X="17.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAIJAAAAAAgAAMAMAAgOCCAQEAIAAAAIECAAgAAA=</HashCode>
+      <FileName>ViewModels\AudioViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.BaseViewModel" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.FriendsViewModel" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAgBAAAAAAAAAAAAAAKAAAAAAAAAAAAAAQAABA=</HashCode>
+      <FileName>ViewModels\FriendsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.GroupViewModel" Collapsed="true">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAAAAAAAAAQAAAAAIACEAAAABAAAAIAAAAAAAA=</HashCode>
+      <FileName>ViewModels\GroupViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEBAAAAAEAAEAAACBBAAAACCAGAQIACAIAA=</HashCode>
+      <FileName>ViewModels\LoginPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAMAgCEBAEAgICIAGASkACCAQAgAUAgACAAAAIACA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.PhotoAlbumsViewModel" Collapsed="true">
+    <Position X="12" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhAgQAAIAAKCAAKAAAAAACABABAIAAAAAAAAIAAAA=</HashCode>
+      <FileName>ViewModels\PhotoAlbumsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.ProfileViewPageViewModel" Collapsed="true">
+    <Position X="13.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACAAAACAICAACAAAQCAJQAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ViewModels\ProfileViewPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.VideoPageVIewModel" Collapsed="true">
+    <Position X="15.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAAAAAAAAAAAAAQAAAACAIAgAIAAAAAAAAAAAIg=</HashCode>
+      <FileName>ViewModels\VideoPageVIewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.VideosViewModel" Collapsed="true">
+    <Position X="31.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\VideosViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.ViewModels.ViewModelLocator">
+    <Position X="30.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAAAAEQACAAAAAAAAIAQLAgCAAAAAAAAEACJAQAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelLocator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.AudioViewPage" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgIAAAAAIAAwAAAAAEAQIAAgAAAQAQAA=</HashCode>
+      <FileName>Views\AudioViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.FriendsViewPage" Collapsed="true">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgIAAAAAIAAQAAAAAEAQAAAAAAAQAQAA=</HashCode>
+      <FileName>Views\FriendsViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.GroupsViewPage" Collapsed="true">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgIAAAAAIAAQAAAAAEAQAAAAAAAQAQAA=</HashCode>
+      <FileName>Views\GroupsViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.LoginView" Collapsed="true">
+    <Position X="24.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.PhotoAlbumsViewPage" Collapsed="true">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgIAAAAAIAAQAAAAAEAQAAAAAAAQAQAA=</HashCode>
+      <FileName>Views\PhotoAlbumsViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.ProfileViewPage" Collapsed="true">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAACAAAABgIAAAAAIAgQAAAgAEAQAAAAAAAQAQgA=</HashCode>
+      <FileName>Views\ProfileViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.TempPage" Collapsed="true">
+    <Position X="36.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\TempPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.VideoPlayerPage" Collapsed="true">
+    <Position X="29.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAQAABAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\VideoPlayerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.Views.VideoViewPage" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgIAAAAQIAAQAgAAAEAQAAAAAAAQAQAA=</HashCode>
+      <FileName>Views\VideoViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.VkControls.PhotoGridView" Collapsed="true">
+    <Position X="26" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VkControls\PhotoGridView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.VkControls.PhotoItemGroupToGridView" Collapsed="true">
+    <Position X="27.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VkControls\PhotoItemGroupToGridView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.VkControls.PhotoItemToGridView" Collapsed="true">
+    <Position X="29.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAAEAAAAAAAQAEAAAAAAAAAQBAAQAAAAA=</HashCode>
+      <FileName>VkControls\PhotoItemToGridView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.VkControls.PhotoItemToListView" Collapsed="true">
+    <Position X="31.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgBAAAAEAAAQAAAEAAQAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>VkControls\PhotoItemToListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.VkControls.PhotoItemToPhotoGridView" Collapsed="true">
+    <Position X="33" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgBAAAAEAAAQAAAEAAQAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>VkControls\PhotoItemToPhotoGridView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VKClient.VkControls.SemanticFlipView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAgAAAAEAAAAAAAAAIAEAIAAQAAAAAABAQAABA=</HashCode>
+      <FileName>VkControls\SemanticFlipView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VKClient.VkControls.VideoItemToGridView" Collapsed="true">
+    <Position X="27.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAIAAAAAAQAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>VkControls\VideoItemToGridVIew.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="VKClient.Models.Entities.IEntity" Collapsed="true">
+    <Position X="18.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VKClient.Models.Interfaces.IEntityStorage" Collapsed="true">
+    <Position X="29.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\IEntityStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VKClient.Models.Interfaces.IServiceResult" Collapsed="true">
+    <Position X="31.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IServiceResult.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VKClient.Services.IAudioService">
+    <Position X="28.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAwAAAAAAAAAAAAAAEAAkAAAAQAAEAAoAIAAAAIEAA=</HashCode>
+      <FileName>Services\IAudioService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VKClient.Services.IAuthService">
+    <Position X="26.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IAuthService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VKClient.Services.IStorageService" Collapsed="true">
+    <Position X="33" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAACQACIAAQAAAAQQABAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Services\IStorageService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

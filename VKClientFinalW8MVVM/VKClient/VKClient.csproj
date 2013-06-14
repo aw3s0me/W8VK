@@ -157,6 +157,9 @@
     <Compile Include="Services\IStorageService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\Settings.cs" />
+    <Compile Include="Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AudioViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
@@ -191,6 +194,9 @@
     <Compile Include="Views\NewsViewPage.xaml.cs">
       <DependentUpon>NewsViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OptionViewPage.xaml.cs">
+      <DependentUpon>OptionViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PhotoAlbumsViewPage.xaml.cs">
       <DependentUpon>PhotoAlbumsViewPage.xaml</DependentUpon>
     </Compile>
@@ -219,6 +225,8 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <PRIResource Include="Resources.resw" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="VKClient_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AudioViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewsViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OptionViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

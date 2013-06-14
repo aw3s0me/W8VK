@@ -26,6 +26,10 @@ namespace VkApi.Core.Profile
                 return this.FirstName + " " + this.LastName;
             }
         }
+        public string Education { get; set; }
+        public string Birthday { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
         public bool IsOnline { get; set; }
         public static VkProfile FromJson(JToken json)
         {
@@ -49,6 +53,23 @@ namespace VkApi.Core.Profile
             {
                 vkProfile.IsOnline = json["online"].Value<bool>();
             }
+            if (json["university_name"] != null)
+            {
+                vkProfile.Education = json["university_name"].Value<string>();
+            }
+            if (json["bdate"] != null)
+            {
+                vkProfile.Birthday = json["bdate"].Value<string>();
+            }
+            if (json["country"] != null)
+            {
+                vkProfile.Country = json["country"].Value<string>();
+            }
+            if (json["city"] != null)
+            {
+                vkProfile.City = json["city"].Value<string>();
+            }
+            
             return vkProfile;
         }
     }

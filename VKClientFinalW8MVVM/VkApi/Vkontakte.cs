@@ -32,6 +32,8 @@ namespace VkApi
         private VkVideoRequest _video;
         private VkPhotoAlbumsRequest _photoAlbums;
         private VkPhotoRequest _photos;
+        private VkCountryRequest _countries;
+        private VkCityRequest _cities;
 
         internal static Vkontakte Instance
         {
@@ -49,6 +51,30 @@ namespace VkApi
                     this._audio = new VkAudioRequest();
                 }
                 return this._audio;
+            }
+        }
+
+        public VkCityRequest City
+        {
+            get
+            {
+                if (this._cities == null)
+                {
+                    this._cities = new VkCityRequest();
+                }
+                return this._cities;
+            }
+        }
+
+        public VkCountryRequest Country
+        {
+            get
+            {
+                if (this._countries == null)
+                {
+                    this._countries = new VkCountryRequest();
+                }
+                return this._countries;
             }
         }
 

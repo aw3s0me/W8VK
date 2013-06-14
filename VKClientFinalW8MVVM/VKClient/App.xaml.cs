@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using VKClient.Helpers;
 using VKClient.Resources;
+using VKClient.Services;
+using VKClient.ViewModels;
 using VKClient.Views;
 using VkApi;
 
@@ -55,6 +57,7 @@ namespace VKClient
 
         public App()
         {
+          
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             this.UnhandledException += OnUnhandledException;
@@ -84,8 +87,10 @@ namespace VKClient
                 {
                     //TODO: Load state from previously suspended application
                 }
-
-                // Place the frame in the current Window
+           /*     SplashScreen splash = args.SplashScreen;
+                Splash eSplash = new Splash(splash);
+                splash.Dismissed += TypedEventHandler<SplashScreen, object>(eSplash.onSplashScreenDismissed);   */
+                // Place the frame in the current Window 
                 Window.Current.Content = rootFrame;
             }
 
@@ -94,10 +99,43 @@ namespace VKClient
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(LoginView), args.Arguments))
+
+                try
                 {
-                    throw new Exception("Failed to create initial page");
+                    var vault = new Windows.Security.Credentials.PasswordVault();
+                    var creds = vault.FindAllByResource("VkApp").FirstOrDefault();
+                    if (creds != null)
+                    {
+                        ApplicationService.Instance.Settings.UserId = creds.UserName;
+                        ApplicationService.Instance.Settings.AccessToken =
+                            vault.Retrieve("VkApp", ApplicationService.Instance.Settings.UserId).Password;
+                        ApplicationService.Instance.Settings.Save();
+                        ViewModelLocator.AuthService.SetLoginInfoVk();
+                        //Messenger.Default.Send<GoHomeMessage>(new GoHomeMessage());
+                        //((LoginViewModel)DataContext).GoProfileCommand.Execute(null);
+                        //Messenger.Default.Send<GoHomeMessage>(new GoHomeMessage());
+                        if (!rootFrame.Navigate(typeof(ProfileViewPage), args.Arguments))
+                        {
+                            throw new Exception("Failed to create initial page");
+                        }
+                        
+                        //Frame.Navigate(typeof(ProfileViewPage));
+                        /* Messenger.Default.Send<NavigateToPageMessage>(new NavigateToPageMessage
+                        {
+                            Page = "/ProfileViewPage"
+                        }); */
+                    }
                 }
+                catch (Exception ex)
+                {
+                    if (!rootFrame.Navigate(typeof(LoginView), args.Arguments))
+                    {
+                        throw new Exception("Failed to create initial page");
+                    }
+                }
+                
+
+                
             }
             // Ensure the current window is active
             Window.Current.Activate();

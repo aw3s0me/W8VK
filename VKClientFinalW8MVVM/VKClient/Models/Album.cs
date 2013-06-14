@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VKClient.Models.Entities;
 
 namespace VKClient.Models
 {
-    public class Album
+    public class Album : IEntity
     {
         public string Id
         {

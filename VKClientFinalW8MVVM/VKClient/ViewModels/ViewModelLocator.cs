@@ -13,8 +13,8 @@ namespace VKClient.ViewModels
     class ViewModelLocator
     {
         public const string AppId = "3501149";
-        public const string Protected_Key = "6Cu0XE498xkM68wljycg";
-        public static Vkontakte Vkontakte = new Vkontakte(AppId, Protected_Key);
+        public const string ProtectedKey = "6Cu0XE498xkM68wljycg";
+        public static Vkontakte Vkontakte = new Vkontakte(AppId, ProtectedKey);
         private static readonly Lazy<IStorageService> _isolatedStorageService;
         private static readonly Lazy<DataService> _dataService = new Lazy<DataService>(() => new DataService(ViewModelLocator.Vkontakte));
         private static readonly Lazy<AuthService> _authService = new Lazy<AuthService>(() => new AuthService(ViewModelLocator.Vkontakte));

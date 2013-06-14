@@ -67,16 +67,9 @@ namespace VKClient.Services
                         this._mediaPlayer.UpdateLayout();
                         MediaElement mediaPlayer = this._mediaPlayer;
                         mediaPlayer.MediaEnded += this.MediaPlayerOnMediaEnded;
-                        //     WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(mediaPlayer.add_MediaEnded), new Action<EventRegistrationToken>(mediaPlayer.remove_MediaEnded), new RoutedEventHandler(this.MediaPlayerOnMediaEnded));
-                        //MediaElement mediaPlayer2 = this._mediaPlayer;
                         mediaPlayer.MediaFailed += this.MediaPlayerOnMediaFailed;
-                        //   WindowsRuntimeMarshal.AddEventHandler<ExceptionRoutedEventHandler>(new Func<ExceptionRoutedEventHandler, EventRegistrationToken>(mediaPlayer2.add_MediaFailed), new Action<EventRegistrationToken>(mediaPlayer2.remove_MediaFailed), new ExceptionRoutedEventHandler(this.MediaPlayerOnMediaFailed));
-                        //MediaElement mediaPlayer3 = this._mediaPlayer;
                         mediaPlayer.MediaOpened += this.MediaPlayerOnMediaOpened;
-                        //   WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(mediaPlayer3.add_MediaOpened), new Action<EventRegistrationToken>(mediaPlayer3.remove_MediaOpened), new RoutedEventHandler(this.MediaPlayerOnMediaOpened));
-                        //MediaElement mediaPlayer4 = this._mediaPlayer;
                         mediaPlayer.CurrentStateChanged += this.MediaPlayerCurrentStateChanged;
-                        //   WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(mediaPlayer4.add_CurrentStateChanged), new Action<EventRegistrationToken>(mediaPlayer4.remove_CurrentStateChanged), new RoutedEventHandler(this.MediaPlayerCurrentStateChanged));
                         this._mediaPlayer.Volume = (ApplicationService.Instance.Settings.Volume/100.0);
                         this._mediaPlayer.IsMuted = (ApplicationService.Instance.Settings.IsMuted);
 
@@ -254,26 +247,14 @@ namespace VKClient.Services
                 {
                     await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Stop));
                 };
-		/*	WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(MediaControl.add_StopPressed), new Action<EventRegistrationToken>(MediaControl.remove_StopPressed), delegate(object sender, object o)
-			{
-				await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Stop));
-			}); */
             MediaControl.PlayPressed += async delegate(object sender, object o)
 			{
 				await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Play));
 			};
-		/*	WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(MediaControl.add_PlayPressed), new Action<EventRegistrationToken>(MediaControl.remove_PlayPressed), delegate(object sender, object o)
-			{
-				await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Play));
-			}); */
             MediaControl.PausePressed += async delegate(object sender, object o)
                 {
                     await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Pause));
                 };
-		/*	WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(MediaControl.add_PausePressed), new Action<EventRegistrationToken>(MediaControl.remove_PausePressed), delegate(object sender, object o)
-			{
-				await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Pause));
-			}); */
             MediaControl.PlayPauseTogglePressed += async delegate(object sender, object o)
                 {
                     await this._dispatcher.RunAsync(0, delegate
@@ -286,27 +267,6 @@ namespace VKClient.Services
                             this.Pause();
                         });
                 };
-		/*	WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(MediaControl.add_PlayPauseTogglePressed), new Action<EventRegistrationToken>(MediaControl.remove_PlayPauseTogglePressed), delegate(object sender, object o)
-			{
-				await this._dispatcher.RunAsync(0, delegate
-				{
-					if (!MediaControl.get_IsPlaying())
-					{
-						this.Play();
-						return;
-					}
-					this.Pause();
-				});
-			});
-			WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(MediaControl.add_NextTrackPressed), new Action<EventRegistrationToken>(MediaControl.remove_NextTrackPressed), delegate(object sender, object o)
-			{
-				await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Next));
-			});
-
-			WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(MediaControl.add_PreviousTrackPressed), new Action<EventRegistrationToken>(MediaControl.remove_PreviousTrackPressed), delegate(object sender, object o)
-			{
-				await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Prev));
-			}); */
             MediaControl.NextTrackPressed += async delegate(object sender, object o)
                 {
                     await this._dispatcher.RunAsync(0, new DispatchedHandler(this.Prev));
@@ -318,7 +278,6 @@ namespace VKClient.Services
 			this._positionTimer = new DispatcherTimer();
 			this._positionTimer.Interval = (TimeSpan.FromMilliseconds(500.0));
 			DispatcherTimer positionTimer = this._positionTimer;
-		//	WindowsRuntimeMarshal.AddEventHandler<EventHandler<object>>(new Func<EventHandler<object>, EventRegistrationToken>(positionTimer.add_Tick), new Action<EventRegistrationToken>(positionTimer.remove_Tick), new EventHandler<object>(this.PositionTimerTick));
             positionTimer.Tick += PositionTimerTick;
 			if (this.IsPlaying)
 			{

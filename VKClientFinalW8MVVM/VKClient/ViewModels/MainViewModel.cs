@@ -169,10 +169,10 @@ namespace VKClient.ViewModels
                 this.LoadUserInfo();
                 return;
             }
-            base.MessengerInstance.Send<NavigateToPageMessage>(new NavigateToPageMessage
+            /*base.MessengerInstance.Send<NavigateToPageMessage>(new NavigateToPageMessage
             {
                 Page = "/LoginView"
-            });
+            }); */
             if (ViewModelLocator.AudioService.IsPlaying)
             {
                 ViewModelLocator.AudioService.Stop();
@@ -231,6 +231,7 @@ namespace VKClient.ViewModels
         {
             this.InitializeMessageInterception();
             this.InitializeCommands();
+            
         }
 
         private void InitializeCommands()

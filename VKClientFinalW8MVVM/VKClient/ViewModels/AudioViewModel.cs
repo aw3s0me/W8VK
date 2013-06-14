@@ -122,7 +122,16 @@ namespace VKClient.ViewModels
             this.PlayAudioCommand = new RelayCommand<Audio>(delegate(Audio audio)
             {
                 ViewModelLocator.AudioService.Play(audio);
-                ViewModelLocator.AudioService.Playlist = this.Audios.ToList<Audio>();
+                //NULL exception WTF, maybe audioservice == 0
+                if (Audios == null)
+                {
+                    return;
+                }
+                else
+                {
+                    ViewModelLocator.AudioService.Playlist = this.Audios.ToList<Audio>();
+                }
+                
             });
         
             this.AddAudiosCommand = new RelayCommand(new Action(this.LoadAllAudios)); 

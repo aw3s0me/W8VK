@@ -20,6 +20,7 @@ namespace VKClient.ViewModels
         private Uri _profileImage;
         private UserProfile _userProfile;
         private string _name;
+        private string _info;
         private PhotoItemToGridView _photoItemToGridView;
         private ObservableCollection<PhotoItemGroupToGridView> _items;
 
@@ -76,6 +77,21 @@ namespace VKClient.ViewModels
             }
         }
 
+        public string Info
+        {
+            get { return _info; }
+            set
+            {
+                if (_info == value)
+                {
+                    return;
+                }
+
+                this._info = value;
+                this.RaisePropertyChanged("Info");
+            }
+        }
+
         public Uri ProfileImage
         {
             get { return _profileImage; }
@@ -123,6 +139,28 @@ namespace VKClient.ViewModels
             
         }
 
+        public string MakeUpAnInfo(UserProfile user)
+        {
+            string TotalInfo = String.Empty;
+            if (!String.IsNullOrEmpty(user.Country))
+            {
+                TotalInfo += "Страна:" + "\n" + user.Country + "\n";
+            }
+            if (!String.IsNullOrEmpty(user.City))
+            {
+                TotalInfo += "Город:" + "\n" + user.City + "\n";
+            }
+            if (!String.IsNullOrEmpty(user.BirthDate))
+            {
+                TotalInfo += "Дата рождения:" + "\n" + user.BirthDate + "\n";
+            }
+            if (!String.IsNullOrEmpty(user.UniversityName))
+            {
+                TotalInfo += "ВУЗ:" + "\n" + user.UniversityName;
+            }
+            return TotalInfo;
+        }
+
         public async void LoadInfo()
         {
             base.IsWorking = true;
@@ -138,6 +176,8 @@ namespace VKClient.ViewModels
                 }
                 ProfileImage = UserProfile.PhotoBig;
                 Name = UserProfile.Name;
+                Info = MakeUpAnInfo(UserProfile);
+
                 if (UserProfile != null)
                 {
                     Items = new ObservableCollection<PhotoItemGroupToGridView>();
@@ -152,45 +192,58 @@ namespace VKClient.ViewModels
                     List<PhotoAlbum> albumsGot = await ViewModelLocator.DataService.GetPhotoAlbums(UserProfile.Uid);
                     IList<Video> videosGot = await ViewModelLocator.DataService.GetVideo(null, UserProfile.Uid);
                     List<UserProfile> friendsGot = await ViewModelLocator.DataService.GetFriends(UserProfile.Uid, 4);
-                    for (int i = 0; i < 4 && albumsGot.Count > i; i++)
+                    if (albumsGot != null)
                     {
-                        var PhotoItem = new PhotoItemToGridView
+                        for (int i = 0; i < 4 && albumsGot.Count > i; i++)
+                        {
+                            var PhotoItem = new PhotoItemToGridView
                             {
                                 Title = albumsGot[i].Title,
                                 Type = "Photo",
                                 PhotoSrc = albumsGot[i].PhotoSrc,
                                 Id = albumsGot[i].AlbumId.ToString()
                             };
-                        RaisePropertyChanged("Items");
-                        photoAlbums.Items.Add(PhotoItem);
+                            RaisePropertyChanged("Items");
+                            photoAlbums.Items.Add(PhotoItem);
+                        }
+                        Items.Add(photoAlbums);
                     }
-                    for (int i = 0; i < 4 && videosGot.Count > i; i++)
+                    if (videosGot != null)
                     {
-                        var VideoItem = new PhotoItemToGridView
+                        for (int i = 0; i < 4 && videosGot.Count > i; i++)
                         {
-                            Title = videosGot[i].Title,
-                            Type = "Video",
-                            Player = videosGot[i].Player,
-                            PhotoSrc = new Uri(videosGot[i].ImageMedium)
-                        };
-                        RaisePropertyChanged("Items");
-                        videos.Items.Add(VideoItem);
+                            var VideoItem = new PhotoItemToGridView
+                            {
+                                Title = videosGot[i].Title,
+                                Type = "Video",
+                                Player = videosGot[i].Player,
+                                PhotoSrc = new Uri(videosGot[i].ImageMedium)
+                            };
+                            RaisePropertyChanged("Items");
+                            videos.Items.Add(VideoItem);
+                        }
+                        Items.Add(videos);
                     }
-                    for (int i = 0; i < 4 && friendsGot.Count > i; i++)
+                    if (friendsGot != null)
                     {
-                        var FriendItem = new PhotoItemToGridView
+                        for (int i = 0; i < 4 && friendsGot.Count > i; i++)
                         {
-                            Title = friendsGot[i].Name,
-                            Id = friendsGot[i].Uid,
-                            Type = "Friend",
-                            PhotoSrc = friendsGot[i].PhotoBig
-                        };
-                        RaisePropertyChanged("Items");
-                        friends.Items.Add(FriendItem);
+                            var FriendItem = new PhotoItemToGridView
+                            {
+                                Title = friendsGot[i].Name,
+                                Id = friendsGot[i].Uid,
+                                Type = "Friend",
+                                PhotoSrc = friendsGot[i].PhotoBig
+                            };
+                            RaisePropertyChanged("Items");
+                            friends.Items.Add(FriendItem);
+                        }
+                        Items.Add(friends);
                     }
-                    Items.Add(photoAlbums);
-                    Items.Add(videos);
-                    Items.Add(friends);
+                    
+                    
+                    
+                    
                     RaisePropertyChanged("Items");
                 }
                 else throw new Exception("Ошибка");

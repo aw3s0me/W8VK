@@ -110,6 +110,32 @@ namespace VKClient.Views
             Frame.Navigate(typeof(GroupsViewPage), ViewModelLocator.Vkontakte.AccessToken.UserId);
         }
 
+        private void MyMessagesClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MessagesViewPage));
+        }
+
+        private void MyNewsClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewsViewPage));
+        }
+
+        private void MyOptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(OptionViewPage));
+        }
+
+        private void MySwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModelLocator.AuthService.LogOutVk();
+            Frame.Navigate(typeof(LoginView));
+        }
+
+        private void MyExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
+
 
         private void GridViewForVideos_ItemClick(object sender, ItemClickEventArgs e)
         {

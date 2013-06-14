@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using GalaSoft.MvvmLight.Messaging;
+using VKClient.Models;
+using VKClient.Services;
 using VKClient.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -28,6 +32,15 @@ namespace VKClient.Views
             this.InitializeComponent();
             base.DataContext=new LoginViewModel();
             ((LoginViewModel)DataContext).LoginCommand.Execute(null);
+        /*    if (ViewModelLocator.AuthService.IsLoggedInVk(true))
+            //if (String.IsNullOrEmpty(ApplicationService.Instance.Settings.AccessToken) || String.IsNullOrEmpty(ApplicationService.Instance.Settings.UserId))
+                
+            else
+            {
+                ViewModelLocator.AuthService.SetLoginInfoVk();
+                Frame frame = (Frame)Window.Current.Content;
+                frame.Navigate(typeof(Views.ProfileViewPage));
+            } */
             //отслеживает все изменения и обрабатывает запросы для БД
             //также хорош для их обработки
             //DataContext = new LoginViewModel();
@@ -40,6 +53,7 @@ namespace VKClient.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

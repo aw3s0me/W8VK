@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VkApi.Auth.AccessToken" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAABAAA=</HashCode>
+      <FileName>Auth\AccessToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Attachments.VkAttachment" Collapsed="true">
+    <Position X="1.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Attachments\VkAttachment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Attachments.VkAudioAttachment" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAEAAAQAAAAAAAIAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Core\Attachments\VkAudioAttachment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Attachments.VkPhotoAttachment" Collapsed="true">
+    <Position X="2.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Attachments\VkPhotoAttachment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Audio.VkAudio" Collapsed="true">
+    <Position X="13.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAACAEEAAQAAAAAAgIAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Core\Audio\VkAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Audio.VkAudioAlbum" Collapsed="true">
+    <Position X="13.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAEAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Audio\VkAudioAlbum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Audio.VkAudioRequest" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAAAAAAAABAABAEAAABAAAAAAgAgAAAAAAAAAgAIA=</HashCode>
+      <FileName>Core\Audio\VkAudioRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Friends.VkFriendsRequest" Collapsed="true">
+    <Position X="9.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Friends\VkFriendsRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Groups.VkGroup">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Groups\VkGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Groups.VkGroupsRequest" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Groups\VkGroupsRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.PhotoAlbums.VkPhoto" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAIBAAAAAAAAQAAAEAAgAAEAAAAAAACCAAAAQA=</HashCode>
+      <FileName>Core\PhotoAlbums\VkPhoto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.PhotoAlbums.VkPhotoAlbum" Collapsed="true">
+    <Position X="13.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAIQAAgAEAAAQAAAAgAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Core\PhotoAlbums\VkPhotoAlbum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.PhotoAlbums.VkPhotoAlbumsRequest" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\PhotoAlbums\VkPhotoAlbumsRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.PhotoAlbums.VkPhotoRequest" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\PhotoAlbums\VkPhotoRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Profile.VkProfile">
+    <Position X="6.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAQAAAAQAAACAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Core\Profile\VkProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Profile.VkProfileBase">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAAAEAAAQAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Core\Profile\VkProfileBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Profile.VkUsersRequest" Collapsed="true">
+    <Position X="9.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Profile\VkUsersRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Video.VkVideo" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAiAEAAAQAAAAAAAAAAAAABAAAAQQCAAIQ=</HashCode>
+      <FileName>Core\Video\VkVideo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.Video.VkVideoRequest" Collapsed="true">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAACAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Core\Video\VkVideoRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Core.VkRequest" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAEAAQAAABAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\VkRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Error.VkCaptchaNeededException" Collapsed="true">
+    <Position X="3.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Error\VkCaptchaNeededException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Error.VkException" Collapsed="true">
+    <Position X="3.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Error\VkException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VkApi.Vkontakte" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AVEkAGAEBIAAACAAAAkAAIAAEAAAAJQAQAAQAAIAAAg=</HashCode>
+      <FileName>Vkontakte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
