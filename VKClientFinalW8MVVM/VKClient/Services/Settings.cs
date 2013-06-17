@@ -9,7 +9,7 @@ namespace VKClient.Services
 {
     public class Settings
     {
-        public String AccessToken
+        public string AccessToken
         {
             get;
             set;
@@ -69,7 +69,15 @@ namespace VKClient.Services
             set;
         }
 
-        public Double Volume
+        public string BackGroundColor
+        {
+            get;
+            set;
+        }
+
+        public string FontColor { get; set; }
+
+        public double Volume
         {
             get;
             set;
@@ -79,7 +87,7 @@ namespace VKClient.Services
         {
         }
 
-        private T Get<T>(String key, T defaultValue)
+        private T Get<T>(string key, T defaultValue)
         {
             return AppSettingsProvider.Get<T>(key, defaultValue);
         }
@@ -88,17 +96,18 @@ namespace VKClient.Services
         {
             try
             {
-                this.AccessToken = this.Get<String>("AccessToken", String.Empty);
-                this.UserId = this.Get<String>("UserId", String.Empty);
-                this.Shuffle = this.Get<Boolean>("Shuffle", false);
-                this.Repeat = this.Get<Boolean>("Repeat", false);
-                this.Volume = this.Get<Double>("Volume", 50);
-                this.IsMuted = this.Get<Boolean>("IsMuted", false);
-                this.ColorScheme = this.Get<String>("ColorScheme", "Deep Blue");
-                this.ShowToasts = this.Get<Boolean>("ShowToasts", true);
-                this.AutoNowPlaying = this.Get<Boolean>("AutoNowPlaying", true);
-                this.EnableStatusBroadcasting = this.Get<Boolean>("EnableStatusBroadcasting", false);
-                this.EnableScrobbling = this.Get<Boolean>("EnableScrobbling", false);
+                this.AccessToken = this.Get<string>("AccessToken", String.Empty);
+                this.UserId = this.Get<string>("UserId", String.Empty);
+                this.Shuffle = this.Get<bool>("Shuffle", false);
+                this.Repeat = this.Get<bool>("Repeat", false);
+                this.Volume = this.Get<double>("Volume", 50);
+                this.IsMuted = this.Get<bool>("IsMuted", false);
+                this.ColorScheme = this.Get<string>("ColorScheme", "Deep Blue");
+                this.BackGroundColor = this.Get<string>("BackGroundColor", "Black");
+                this.FontColor = this.Get<string>("FontColor", "Dark");
+                this.ShowToasts = this.Get<bool>("ShowToasts", true);
+                this.AutoNowPlaying = this.Get<bool>("AutoNowPlaying", true);
+                this.EnableStatusBroadcasting = this.Get<bool>("EnableStatusBroadcasting", false);
             }
             catch (Exception ex)
             {
@@ -112,17 +121,18 @@ namespace VKClient.Services
         {
             try
             {
-                this.Set<String>("AccessToken", this.AccessToken);
-                this.Set<String>("UserId", this.UserId);
-                this.Set<Boolean>("Shuffle", this.Shuffle);
-                this.Set<Boolean>("Repeat", this.Repeat);
-                this.Set<Double>("Volume", this.Volume);
-                this.Set<Boolean>("IsMuted", this.IsMuted);
-                this.Set<String>("ColorScheme", this.ColorScheme);
-                this.Set<Boolean>("ShowToasts", this.ShowToasts);
-                this.Set<Boolean>("AutoNowPlaying", this.AutoNowPlaying);
-                this.Set<Boolean>("EnableStatusBroadcasting", this.EnableStatusBroadcasting);
-                this.Set<Boolean>("EnableScrobbling", this.EnableScrobbling);
+                this.Set<string>("AccessToken", this.AccessToken);
+                this.Set<string>("UserId", this.UserId);
+                this.Set<bool>("Shuffle", this.Shuffle);
+                this.Set<bool>("Repeat", this.Repeat);
+                this.Set<double>("Volume", this.Volume);
+                this.Set<bool>("IsMuted", this.IsMuted);
+                this.Set<string>("ColorScheme", this.ColorScheme);
+                this.Set<string>("BackGroundColor", this.BackGroundColor);
+                this.Set<string>("FontColor", this.FontColor);
+                this.Set<bool>("ShowToasts", this.ShowToasts);
+                this.Set<bool>("AutoNowPlaying", this.AutoNowPlaying);
+                this.Set<bool>("EnableStatusBroadcasting", this.EnableStatusBroadcasting);
             }
             catch (Exception ex)
             {

@@ -24,6 +24,21 @@ namespace VKClient.Services
             {
                 return base.AppSettings;
             }
+            set { 
+                this.Settings.AccessToken = value.AccessToken;
+                this.Settings.AutoNowPlaying = value.AutoNowPlaying;
+                this.Settings.BackGroundColor = value.BackGroundColor;
+                this.Settings.ColorScheme = value.ColorScheme;
+                this.Settings.EnableScrobbling = value.EnableScrobbling;
+                this.Settings.EnableStatusBroadcasting = value.EnableStatusBroadcasting;
+                this.Settings.FontColor = value.FontColor;
+                this.Settings.IsMuted = value.IsMuted;
+                this.Settings.Repeat = value.Repeat;
+                this.Settings.ShowToasts = value.ShowToasts;
+                this.Settings.Shuffle = value.Shuffle;
+                this.Settings.UserId = value.UserId;
+                this.Settings.Volume = value.Volume;
+            }
         }
 
         static ApplicationService()

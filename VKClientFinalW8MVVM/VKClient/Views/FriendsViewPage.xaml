@@ -44,7 +44,7 @@
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
 
-    <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush60}">
+    <Grid x:Name="PageGrid" Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush60}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="254*"/>
             <ColumnDefinition Width="429*"/>

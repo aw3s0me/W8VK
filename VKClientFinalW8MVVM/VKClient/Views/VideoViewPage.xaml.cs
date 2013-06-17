@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Callisto.Controls;
+using VKClient.Converters;
 using VKClient.Models.Entities;
+using VKClient.Services;
 using VKClient.ViewModels;
 using VKClient.VkControls;
 using Windows.Foundation;
@@ -33,6 +36,19 @@ namespace VKClient.Views
         {
             this.InitializeComponent();
             DataContext = new VideoPageVIewModel();
+            if (!String.IsNullOrEmpty(ApplicationService.Instance.Settings.BackGroundColor))
+            {
+                try
+                {
+                    var brush =
+                        HexToColorConverter.GetColorFromHex(ApplicationService.Instance.Settings.BackGroundColor);
+                    PageGrid.Background = brush;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
         }
 
         /// <summary>

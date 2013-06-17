@@ -298,7 +298,7 @@
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
 
-    <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush60}">
+    <Grid x:Name="PageGrid" Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush60}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -306,7 +306,6 @@
         <ListView x:Name="myImageList"
                   ItemsSource="{Binding PhotoAlbums}"
                   Grid.Column="0"
-                  Background="{StaticResource AccentBrush60}"
                   SelectionMode="Single"
                   IsSwipeEnabled="False"
                   SelectedItem="{Binding SelectedPhoto}"
@@ -353,7 +352,7 @@
         </GridView>
 
         <!-- Back button and page title -->
-        <Grid Background="{StaticResource AccentBrush60}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -364,6 +363,7 @@
         <FlipView x:Name="PhotoFlipView" HorizontalAlignment="Left" Margin="0,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1059" Height="453" 
                   BorderBrush="Black" BorderThickness="1"
                   ItemsSource="{Binding Photos}"
+                  Background="LightGray"
                   >
             <FlipView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -373,7 +373,7 @@
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Image Width="600" Height="400" Source="{Binding PhotoUri}" Stretch="Fill"/>
+                        <Image x:Name="FlipViewImage" Width="{Binding Width}" Height="{Binding Height}" Source="{Binding PhotoUri}" Stretch="Fill" ImageOpened="Image_ImageOpened_1"/>
                     </Grid>
                 </DataTemplate>
             </FlipView.ItemTemplate>

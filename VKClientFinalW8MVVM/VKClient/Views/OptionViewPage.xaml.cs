@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using VKClient.Converters;
+using VKClient.Services;
 using VKClient.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,9 +26,36 @@ namespace VKClient.Views
     /// </summary>
     public sealed partial class OptionViewPage : VKClient.Common.LayoutAwarePage
     {
+        
         public OptionViewPage()
         {
             this.InitializeComponent();
+            WhiteFontRButton.IsChecked = true;
+            base.DataContext = new OptionViewModel();
+            if (!String.IsNullOrEmpty(ApplicationService.Instance.Settings.BackGroundColor))
+            {
+                try
+                {
+                    var brush =
+                        HexToColorConverter.GetColorFromHex(ApplicationService.Instance.Settings.BackGroundColor);
+                    PageGrid.Background = brush;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            Windows.UI.Color textColor = new Windows.UI.Color();
+            textColor.A = 255;
+            textColor.R = (byte)redSlider.Value;
+            textColor.G = (byte)greenSlider.Value;
+            textColor.B = (byte)blueSlider.Value;
+            SolidColorBrush textBrush = new SolidColorBrush(textColor);
+            rectangle.Fill = textBrush;
         }
 
         /// <summary>
@@ -104,6 +135,21 @@ namespace VKClient.Views
         private void MyExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if ( rectangle.Fill is SolidColorBrush ) 
+            {
+                SolidColorBrush brush = rectangle.Fill as SolidColorBrush;
+                ((OptionViewModel)base.DataContext).ColorName = brush.Color.ToString();
+                //bool FontColor = DarkFontRButton.Checked;
+                ((OptionViewModel)base.DataContext).FontColorName = DarkFontRButton.IsChecked.GetValueOrDefault() ? "Light" : "Dark";
+                Debug.WriteLine(((OptionViewModel)base.DataContext).ColorName);
+                Debug.WriteLine(((OptionViewModel)base.DataContext).FontColorName);
+                ((OptionViewModel)base.DataContext).ChangeAppProperties.Execute(null);
+            }
+
         }
     }
 }

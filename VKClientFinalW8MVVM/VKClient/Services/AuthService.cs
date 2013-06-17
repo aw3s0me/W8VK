@@ -32,7 +32,7 @@ namespace VKClient.Services
             }
             ApplicationService.Instance.Settings.AccessToken = accessToken.Token;
             ApplicationService.Instance.Settings.UserId = accessToken.UserId;
-            ApplicationService.Instance.Settings.Save();
+      //      ApplicationService.Instance.Settings.Save();
             var vault = new Windows.Security.Credentials.PasswordVault();
             vault.Add(new Windows.Security.Credentials.PasswordCredential(
                 "VkApp", ApplicationService.Instance.Settings.UserId, ApplicationService.Instance.Settings.AccessToken));

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="PageGrid" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid HorizontalAlignment="Left" Height="104" VerticalAlignment="Top" Width="1366" Background="{StaticResource AccentBrush}"/>
         <Grid HorizontalAlignment="Left" Height="664" VerticalAlignment="Top" Width="1366" Margin="0,104,0,0" Background="GhostWhite">
             <Grid x:Name="WebGrid" Height="432" HorizontalAlignment="Center" VerticalAlignment="Center" Width="737" Margin="326,112,303,120" Background="{StaticResource AccentBrush60}">

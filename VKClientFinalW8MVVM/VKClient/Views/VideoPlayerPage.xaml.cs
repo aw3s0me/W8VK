@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using VKClient.Converters;
+using VKClient.Services;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -27,6 +30,19 @@ namespace VKClient.Views
         public VideoPlayerPage()
         {
             this.InitializeComponent();
+            if (!String.IsNullOrEmpty(ApplicationService.Instance.Settings.BackGroundColor))
+            {
+                try
+                {
+                    var brush =
+                        HexToColorConverter.GetColorFromHex(ApplicationService.Instance.Settings.BackGroundColor);
+                    PageGrid.Background = brush;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
         }
 
         /// <summary>

@@ -23,6 +23,26 @@ namespace VKClient.ViewModels
         private string _info;
         private PhotoItemToGridView _photoItemToGridView;
         private ObservableCollection<PhotoItemGroupToGridView> _items;
+        private ObservableCollection<InfoEntryToListView> _entries = new ObservableCollection<InfoEntryToListView>();
+
+        public ObservableCollection<InfoEntryToListView> Entries
+        {
+            get { return _entries; }
+            set
+            {
+                if (_entries == value)
+                {
+                    return;
+                }
+                else if (value == null)
+                {
+                    return;
+                }
+
+                _entries = value;
+                this.RaisePropertyChanged("Entries");
+            }
+        }
 
         public PhotoItemToGridView PhotoItemGroupToGridView
         {
@@ -161,6 +181,43 @@ namespace VKClient.ViewModels
             return TotalInfo;
         }
 
+        public void MakeUpAnInfoToListView(UserProfile user)
+        {
+            if (!String.IsNullOrEmpty(user.Country))
+            {
+                Entries.Add(new InfoEntryToListView
+                    {
+                        Title = "Страна:",
+                        Info = user.Country
+                    });
+            }
+            if (!String.IsNullOrEmpty(user.City))
+            {
+                Entries.Add(new InfoEntryToListView
+                {
+                    Title = "Город:",
+                    Info = user.City
+                });
+            }
+            if (!String.IsNullOrEmpty(user.BirthDate))
+            {
+                Entries.Add(new InfoEntryToListView
+                {
+                    Title = "Дата рождения:",
+                    Info = user.BirthDate
+                });
+            }
+            if (!String.IsNullOrEmpty(user.UniversityName))
+            {
+                Entries.Add(new InfoEntryToListView
+                {
+                    Title = "ВУЗ:",
+                    Info = user.UniversityName
+                });
+            }
+
+        }
+
         public async void LoadInfo()
         {
             base.IsWorking = true;
@@ -176,7 +233,8 @@ namespace VKClient.ViewModels
                 }
                 ProfileImage = UserProfile.PhotoBig;
                 Name = UserProfile.Name;
-                Info = MakeUpAnInfo(UserProfile);
+                MakeUpAnInfoToListView(UserProfile);
+                //Info = MakeUpAnInfo(UserProfile);
 
                 if (UserProfile != null)
                 {

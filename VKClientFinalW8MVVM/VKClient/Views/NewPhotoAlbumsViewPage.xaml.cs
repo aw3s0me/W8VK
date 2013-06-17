@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using VKClient.Converters;
 using VKClient.Models.Entities;
+using VKClient.Services;
 using VKClient.ViewModels;
 using VKClient.VkControls;
 using Windows.Foundation;
@@ -15,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
@@ -30,7 +34,19 @@ namespace VKClient.Views
         {
             this.InitializeComponent();
             DataContext = new PhotoAlbumsViewModel();
-
+            if (!String.IsNullOrEmpty(ApplicationService.Instance.Settings.BackGroundColor))
+            {
+                try
+                {
+                    var brush =
+                        HexToColorConverter.GetColorFromHex(ApplicationService.Instance.Settings.BackGroundColor);
+                    PageGrid.Background = brush;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
         }
 
 
@@ -179,6 +195,18 @@ namespace VKClient.Views
         private void MyExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();
+        }
+
+        private void Image_ImageOpened_1(object sender, RoutedEventArgs e)
+        {
+         /*   BitmapImage i = sender as BitmapImage;
+            var item = PhotoFlipView.SelectedItem as PhotoItemToPhotoGridView;
+            
+
+            PhotoFlipView
+            F.Width = i.PixelWidth;
+            ImgSize.Height = i.PixelHeight;
+            MessageBox.Show("LOADED IMAGE SIZE\n W:" + ImgSize.Width.ToString() + "  H:" + ImgSize.Height.ToString()); */
         }
 
     }

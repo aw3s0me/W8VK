@@ -7,11 +7,11 @@
     xmlns:local="using:VKClient.Views"
     xmlns:common="using:VKClient.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:services="using:VKClient.Services"
     mc:Ignorable="d">
 
     <Page.Resources>
-
+        <services:ApplicationService x:Key="Settings"/>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
         <x:String x:Key="AppName">My Application</x:String>
     </Page.Resources>
@@ -41,14 +41,39 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    
-    
-    <Grid Style="{StaticResource LayoutRootStyle}">
+
+
+    <Grid x:Name="PageGrid" Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush60}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        <Grid x:Name="LayoutRoot" Visibility="Visible" Margin="-13,5,849,359" Grid.Row="1">
+            <Slider Height="44" Name="redSlider" Width="360" Maximum="255"
+                ValueChanged="slider_ValueChanged" SmallChange="1"
+                Margin="145,143,0,0" HorizontalAlignment="Left"
+                VerticalAlignment="Top" />
+            <Slider Height="44" HorizontalAlignment="Left" Margin="145,176,0,0"
+                 Name="greenSlider" VerticalAlignment="Top" Width="360" Maximum="255"
+                 ValueChanged="slider_ValueChanged" SmallChange="1" />
+            <Slider Height="44" HorizontalAlignment="Left" Margin="145,214,0,0"
+                 Name="blueSlider" VerticalAlignment="Top" Width="360" Maximum="255"
+                 ValueChanged="slider_ValueChanged" SmallChange="1" />
+            <Ellipse Height="100" Width="100" x:Name="rectangle" Margin="221,38,0,0"
+                 Fill="Gray"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBlock Height="33" Margin="40,154,411,0"
+                 Name="redLabel" Text="Красный" VerticalAlignment="Top"
+                 TextAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="-0.424,0.857" />
+            <TextBlock Height="21" HorizontalAlignment="Left" Margin="59,214,0,0"
+                 Name="blueLabel" Text="Синий" VerticalAlignment="Top" Width="60"
+                 TextAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Blue" />
+            <TextBlock Height="22" HorizontalAlignment="Left" Margin="40,187,0,0"
+                 Name="greenLabel" Text="Зеленый" VerticalAlignment="Top" Width="79"
+                 TextAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green" />
+            <TextBlock HorizontalAlignment="Left" Margin="214,0,0,231" TextWrapping="Wrap" Text="Цвет фона" VerticalAlignment="Bottom" Height="33" Width="107" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Left" Margin="562,0,-163,231" TextWrapping="Wrap" Text="Цвет шрифта" VerticalAlignment="Bottom" Height="33" Width="131" FontSize="20"/>
+        </Grid>
         <!-- Back button and page title -->
         <Grid>
             <Grid.ColumnDefinitions>
@@ -56,8 +81,15 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
+            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Настройки" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
+        <Button Content="Применить изменения" HorizontalAlignment="Left" Margin="584,358,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Grid Margin="522,30,684,408" Grid.Row="1">
+            <RadioButton x:Name="DarkFontRButton" Content="Черный" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="38,90,38,73"/>
+            <RadioButton x:Name="WhiteFontRButton" Content="Белый"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="38,34,49,129"/>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="828,358,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Изменения вступят в силу после перезапуска приложения" VerticalAlignment="Top" Height="38" Width="173" RenderTransformOrigin="0.479,0.532"/>
+
 
         <VisualStateManager.VisualStateGroups>
 

@@ -56,7 +56,7 @@
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
 
-    <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush}">
+    <Grid x:Name="PageGrid" Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -126,14 +126,13 @@
                             </DataTemplate>
                         </Controls:LiveTile.ItemTemplate>
                     </Controls:LiveTile>
-                    <Image Source="{Binding ProfileImage}" Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270" Margin="165,125,0,0" Width="225"/>
+                    <Image Source="{Binding ProfileImage}" Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270" Margin="165,92,0,0" Width="225"/>
                     <TextBlock Text="{Binding Name}" Margin="165,5,0,531" TextWrapping="Wrap" HorizontalAlignment="Left" Width="291" FontSize="22" FontWeight="Bold"/>
                     <GridView x:Name="GridViewToFrinedsPhoto" Margin="461,0,0,0"
                                   ItemsSource="{Binding Mode=TwoWay, Source={StaticResource groupedItemsViewSource}}" 
                                   ItemTemplate="{StaticResource MyPhotoItemTemplate}"
                                   SelectionMode="Single"
                                   IsItemClickEnabled="True"
-                                  
                                   IsSwipeEnabled="false" ItemClick="GridViewToFrinedsPhoto_ItemClick">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -146,9 +145,9 @@
                                     <DataTemplate>
                                         <Grid Margin="1,0,0,6">
                                             <Button
-                                    x:Name="ColumnBtn"
-                                    AutomationProperties.Name="Group Title" AutomationProperties.LabeledBy="{Binding Title}"
-                                    Style="{StaticResource TextPrimaryButtonStyle}" Click="Button_Click_1">
+                                                x:Name="ColumnBtn"
+                                                AutomationProperties.Name="Group Title" AutomationProperties.LabeledBy="{Binding Title}"
+                                                Style="{StaticResource TextPrimaryButtonStyle}" Click="Button_Click_1">
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
                                                     <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource GroupHeaderTextStyle}"/>
@@ -165,7 +164,27 @@
                             </GroupStyle>
                         </GridView.GroupStyle>
                         </GridView>
-                        <TextBlock Text="{Binding Info}" HorizontalAlignment="Left" Margin="165,423,0,-25" TextWrapping="Wrap" VerticalAlignment="Top" Height="225" Width="225"/>
+                        <ListView x:Name="AudioListView" ItemsSource="{Binding Entries}" HorizontalAlignment="Left" Margin="165,299,0,0" Height="314" Width="225"
+                            ItemContainerStyle="{StaticResource AudioListViewItemStyle}" Background="Transparent" Foreground="White" Padding="0,60,0,0" SelectionMode="None" IsItemClickEnabled="False" VerticalAlignment="Top"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,10,10,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Background="Transparent" Grid.Column="1">
+                                        <TextBlock Text="{Binding Title}" FontWeight="Normal" FontSize="14" />
+                                        <TextBlock Text="{Binding Info}" Opacity="0.7" FontWeight="SemiLight" FontSize="11"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                   <!--     <TextBlock Text="{Binding Info}" HorizontalAlignment="Left" Margin="165,423,0,-25" TextWrapping="Wrap" VerticalAlignment="Top" Height="225" Width="225"/> -->
                 </Grid>  
             </ScrollViewer>
         </Grid>
